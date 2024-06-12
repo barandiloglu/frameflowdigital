@@ -2,12 +2,14 @@ import React from 'react';
 import AnimatedText from './AnimatedText';
 import './css/AnimatedText.css';
 
+import Logo from './assets/logoGif.gif'
+
 const ComingSoon: React.FC = () => {
   return (
     <div className="flex items-center justify-center h-screen bg-[#353232]">
       <div className="text-center">
         <div className="gif-container">
-          <img src="./src/assets/logoGif.gif" alt="Loading GIF" className=' size-32'/>
+          <img src={Logo} alt="Loading GIF" className=' size-32'/>
         </div>
         <h1 className="text-5xl font-bold mb-10 text-[#ffffeb]">
           Coming Soon<span className="ellipsis"></span>
