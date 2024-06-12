@@ -7,6 +7,26 @@ body {
   background-color: #34495e;
 }
 
+@keyframes ellipsis {
+  0% {
+    content: '';
+  }
+  33% {
+    content: '.';
+  }
+  66% {
+    content: '..';
+  }
+  100% {
+    content: '...';
+  }
+}
+
+.ellipsis::after {
+  content: '';
+  animation: ellipsis steps(1, end) 1s infinite;
+}
+
 .content {
   position: absolute;
   top: 50%;
