@@ -1,13 +1,12 @@
-import React from 'react';
-import './App.css';
+import './index.css';
 import ComingSoon from './ComingSoon';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <>
+    <div>
       <ComingSoon />
-    </>
+    </div>
   );
-}
+};
 
 export default App;
