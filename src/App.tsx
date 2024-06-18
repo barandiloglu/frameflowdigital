@@ -1,12 +1,12 @@
-import './index.css';
-import ComingSoon from './ComingSoon';
+import Navbar from "./Navbar";
 
-const App: React.FC = () => {
+
+function App() {
   return (
-    <div>
-      <ComingSoon />
-    </div>
+    <>
+      <Navbar />
+    </>
   );
-};
+}
 
 export default App;
