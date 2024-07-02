@@ -8,6 +8,8 @@ module.exports = {
     extend: {
       fontFamily: {
         alata: ['Alata', 'sans-serif'],
+        lemonmilk: ['LemonMilk', 'sans-serif'],
+        boucherie: ['Boucherie', 'sans-serif']
       },
       colors: {
         primary: '#d18d29',
