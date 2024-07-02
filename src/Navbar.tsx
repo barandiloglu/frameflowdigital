@@ -109,9 +109,9 @@ const Navbar = () => {
 
     return (
         <header>
-            <nav className=" p-5 bg-secondary text-light font-alata w-full">
+            <nav className="w-full p-5 bg-secondary text-light font-alata">
                 <div className="  flex items-center justify-between mx-auto h-[5vh] w-full">
-                    <div className="flex flex-row items-center relative">
+                    <div className="relative flex flex-row items-center">
                         <Link
                             to='/'
                             className="flex flex-row items-center"
@@ -121,7 +121,7 @@ const Navbar = () => {
                                 alt="Logo"
                                 initial={{ opacity: 0 }}
                                 animate={logoControls}
-                                className="flex h-8 ml-2 w-8" // Adjust the size and position as needed
+                                className="flex w-8 h-8 ml-2" // Adjust the size and position as needed
                             />
                             <motion.div
                                 initial={{ scale: 1, opacity: 0 }}
@@ -134,7 +134,7 @@ const Navbar = () => {
                     </div>
                     <div className='flex items-center'>
                       <motion.div 
-                          className='lg:flex hidden right-4 items-center space-x-8 mr-4'
+                          className='items-center hidden mr-4 space-x-8 lg:flex right-4'
                           variants={container}
                           initial="hidden"
                           animate="visible"
@@ -163,7 +163,7 @@ const Navbar = () => {
                           </motion.button>
                       </motion.div>
                       <div
-                          className="flex right-5 cursor-pointer text-md text-light text-xl"
+                          className="flex text-xl cursor-pointer right-5 text-md text-light"
                           onClick={toggleMenu}
                           >
                               <GiHamburgerMenu />
@@ -181,12 +181,12 @@ const Navbar = () => {
                         initial="initial"
                         animate="animate"
                         exit="exit"
-                        className="fixed left-0 top-0 w-full h-screen origin-top bg-zinc-800 text-zinc-300 mx-auto pt-8 px-5 font-alata z-20"
+                        className="fixed top-0 left-0 z-20 w-full h-screen px-5 pt-8 mx-auto origin-top bg-zinc-800 text-zinc-300 font-alata"
                     >
-                        <div className="flex h-full flex-col">
+                        <div className="flex flex-col h-full">
                             <div className="flex justify-end">
                                 <p
-                                    className="cursor-pointer text-md text-zinc-300 text-xl font-bold"
+                                    className="text-xl font-bold cursor-pointer text-md text-zinc-300"
                                     onClick={toggleMenu}
                                 >
                                     <AiOutlineClose />
@@ -197,12 +197,19 @@ const Navbar = () => {
                                 initial="initial"
                                 animate="open"
                                 exit="initial"
-                                className="flex flex-col h-full justify-center items-center space-y-8"
+                                className="flex flex-col items-center justify-center w-full h-full space-y-8"
                             >
                                 {navLinks.map((link, index) => (
-                                <div key={index} className="overflow-hidden flex flex-row">
-                                    <MobileNavLink title={link.title} href={link.href} setOpen={setOpen} img={link.img}/>
-                                </div>
+                                  <div key={index} className="flex flex-row items-center justify-center w-full overflow-hidden">
+                                      <MobileNavLink title={link.title} href={link.href} setOpen={setOpen} img={link.img}/>
+                                      <motion.span
+                                        animate={{ rotate: [0, 0, 15, -15, 15, -15, 0, 0], scale: [1, 1.5, 1.5, 1.5, 1.5, 1]}}
+                                        transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                                        style={{ display: 'inline-block', transformOrigin: 'bottom' }}
+                                      >
+                                        👋{" "}
+                                      </motion.span>
+                                  </div>
                                 ))}
                             </motion.div>
                         </div>
@@ -247,16 +254,11 @@ const mobileLinkVars = {
     return (
       <motion.div
         variants={mobileLinkVars}
-        className="flex flex-row group text-[calc(13vw)] md:text-[calc(8vw)] lg:text-[calc(5vw)] uppercase"
+        className="flex flex-row group  border-white text-[calc(13vw)] md:text-[calc(8vw)] lg:text-[calc(5vw)] uppercase"
       >
         <Link to={href} onClick={() => setOpen(false)}>{title}</Link>
         <motion.span
-          className="absolute bottom-0 left-0 w-[80%] h-[2px] bg-zinc-300 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out"
-        />
-        <motion.img 
-          src={img} 
-          alt={title} 
-          className="w-28 h-28 rounded-xl mt-4 ml-8" 
+          className="absolute bottom-0 left-0 w-[100%] h-[2px] bg-zinc-300 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out"
         />
       </motion.div>
     );

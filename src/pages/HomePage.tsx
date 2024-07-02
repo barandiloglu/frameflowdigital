@@ -247,7 +247,7 @@ const HomePage = () => {
     const { scrollYProgress } = useScroll();
     
     return (
-        <div className='min-h-screen mx-auto flex flex-col items-center bg-secondary'>
+        <div className='flex flex-col items-center min-h-screen mx-auto bg-secondary'>
             <section className='mt-20 min-h-[20vh] md:min-h-[30vh] lg:min-h-[30vh] xl:min-h-[55vh] 2xl:min-h-[55vh]'>
                 <div className='px-2 flex uppercase overflow-hidden font-lemonmilk tracking-tighter text-[calc(12vw)] md:text-[calc(10vw)] lg:text-[calc(10vw)] z-10 text-light'>
                     <motion.div
@@ -314,14 +314,14 @@ const HomePage = () => {
             </section>
 
             <section className='w-full mb-40'>
-                <div className="min-h-screen bg-secondary px-4 py-12">
+                <div className="min-h-screen px-4 py-12 bg-secondary">
                 <motion.div
                     initial="initial"
                     animate="animate"
                     transition={{
                         staggerChildren: 0.3,
                         }}
-                    className="mx-auto grid max-w-6xl grid-flow-dense grid-cols-12 gap-4"
+                    className="grid max-w-6xl grid-cols-12 gap-4 mx-auto grid-flow-dense"
                 >
                     <HeaderBlock />
                     <SocialsBlock />
@@ -334,7 +334,7 @@ const HomePage = () => {
             </section>
 
             <motion.div
-                className="progress-bar z-10"
+                className="z-10 progress-bar"
                 style={{ scaleX: scrollYProgress }}
             />
 
@@ -378,9 +378,9 @@ const Block = ({ className, ...rest }) => {
       <img
         src="./src/assets/logo.png"
         alt="avatar"
-        className="mb-4 size-[calc(5vw)] md:size-[calc(2vw)] lg:size-[calc(1.5vw)] rounded-full"
+        className="mb-4 size-[calc(5vw)] md:size-[calc(2vw)] lg:size-[calc(1.5vw)] xl:size-[calc(3vw)] rounded-full"
       />
-      <h1 className="mb-12 text-[calc(4vw)] md:text-[calc(2vw)] lg:text-[calc(1.25vw)] text-light font-medium leading-tight">
+      <h1 className="mb-12 text-[calc(4vw)] md:text-[calc(2vw)] lg:text-[calc(1.25vw)] xl:text-[calc(1.5vw)] text-light font-medium leading-tight">
         <span>Hello</span>
         <motion.span
           animate={{ rotate: [0, 0, 15, -15, 15, -15, 0, 0], scale: [1, 1.5, 1.5, 1.5, 1.5, 1]}}
@@ -389,13 +389,13 @@ const Block = ({ className, ...rest }) => {
         >
           👋{" "}
         </motion.span>
-        <span className="text-zinc-400 text-[calc(4vw)] md:text-[calc(2vw)] lg:text-[calc(1.25vw)]">
+        <span className="text-zinc-400 text-[calc(4vw)] md:text-[calc(2vw)] lg:text-[calc(1.25vw)] xl:text-[calc(1.5vw)]">
          {" "} Tell us your vision for your brand, and we will collaborate with you to develop a customized strategy that propels you forward in the digital landscape. 
         </span>
       </h1>
       <a
         href="#"
-        className="flex items-center gap-1 text-primary hover:underline text-[calc(2vw)] md:text-[calc(1.5vw)] lg:text-[calc(1vw)]"
+        className="flex items-center gap-1 text-primary hover:underline text-[calc(2vw)] md:text-[calc(1.5vw)] lg:text-[calc(1vw)] xl:text-[calc(1.25vw)]"
       >
           <Link to={"/contact-us"}>
             Contact us
@@ -419,7 +419,7 @@ const Block = ({ className, ...rest }) => {
       >
         <a
           href="https://www.instagram.com/frameflowdigital/"
-          className="grid h-full place-content-center text-3xl text-white"
+          className="grid h-full text-3xl text-white place-content-center"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -435,7 +435,7 @@ const Block = ({ className, ...rest }) => {
       >
         <a
           href="#"
-          className="grid h-full place-content-center text-3xl text-white"
+          className="grid h-full text-3xl text-white place-content-center"
         >
           <SiLinkedin />
         </a>
@@ -449,7 +449,7 @@ const Block = ({ className, ...rest }) => {
       >
         <a
           href="https://www.tiktok.com/@frameflowdigital"
-          className="grid h-full place-content-center text-3xl text-black"
+          className="grid h-full text-3xl text-black place-content-center"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -462,8 +462,8 @@ const Block = ({ className, ...rest }) => {
   
   const AboutBlock = () => {
     return (
-      <Block className="flex flex-col space-y-2 col-span-12 text-3xl leading-snug bg-primary p-8 font-alata text-[calc(4vw)] md:text-[calc(1.5vw)] lg:text-[calc(1vw)]">
-        <span className="text-secondary font-bold">
+      <Block className="flex flex-col space-y-2 col-span-12 text-3xl leading-snug bg-primary p-8 font-alata text-[calc(4vw)] md:text-[calc(1.5vw)] lg:text-[calc(1vw)] xl:text-[calc(1.5vw)]">
+        <span className="font-bold text-secondary">
           STAND OUT IN THE DIGITAL STAMPEDE.
         </span>
         <span className="text-light">
@@ -482,8 +482,8 @@ const Block = ({ className, ...rest }) => {
         backgroundRepeat: 'no-repeat',
       }}
     >
-      <FiMapPin className=" font-alata text-light font-bold mb-4" />
-      <p className="text-center text-lg text-light font-bold">Toronto</p>
+      <FiMapPin className="size-[calc(6vw)] md:size-[calc(2vw)] lg:size-[calc(1.5vw)] xl:size-[calc(2vw)] mb-4 font-bold font-alata text-light" />
+      <p className="text-[calc(6vw)] md:text-[calc(2vw)] lg:text-[calc(1.25vw)] font-bold text-center text-light">Toronto</p>
     </Block>
   );
   
@@ -501,7 +501,7 @@ const Block = ({ className, ...rest }) => {
         />
         <button
           type="submit"
-          className="flex items-center gap-2 whitespace-nowrap rounded bg-zinc-50 px-3 py-2 text-sm font-medium text-zinc-900 transition-colors hover:bg-zinc-300"
+          className="flex items-center gap-2 px-3 py-2 text-sm font-medium transition-colors rounded whitespace-nowrap bg-zinc-50 text-zinc-900 hover:bg-zinc-300"
         >
           <FiMail /> Join the list
         </button>
@@ -518,7 +518,7 @@ const Block = ({ className, ...rest }) => {
     >
       <button
         type="submit"
-        className="flex items-center gap-2 rounded bg-zinc-800 w-full px-2 py-8 font-medium text-light text-[calc(4vw)] md:text-[calc(1.5vw)] lg:text-[calc(1vw)] transition-colors "
+        className="flex items-center gap-2 rounded bg-zinc-800 w-full px-2 py-8 font-medium text-light text-[calc(4vw)] md:text-[calc(1.5vw)] lg:text-[calc(1vw)] xl:text-[calc(1.5vw)]"
       >
         Let FrameFlow be the architect of your digital presence.
       </button>
