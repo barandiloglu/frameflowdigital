@@ -1,18 +1,24 @@
 import { 
   motion, 
-  useAnimation, 
+  useAnimation,
+  useMotionValue, 
+  useSpring,
+  useTransform,
   AnimatePresence } from 'framer-motion';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import logo from './assets/logo.png';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
+import { FiArrowRight } from "react-icons/fi";
+
 
 const Navbar = () => {
     const textControls = useAnimation();
     const logoControls = useAnimation();
+    const [menuAnimationComplete, setMenuAnimationComplete] = useState(false);
 
     useEffect(() => {
         const sequence = async () => {
@@ -59,9 +65,21 @@ const Navbar = () => {
     };
 
     const [open, setOpen] = useState(false);
-    const toggleMenu = () => {
-      setOpen((prevOpen: boolean) => !prevOpen); // Explicitly set the type of 'prevOpen' to boolean
+    
+    const toggleMenu = async () => {
+      if (!open) {
+        setMenuAnimationComplete(false);
+      }
+    
+      await new Promise<void>(resolve => {
+        setMenuAnimationComplete(false);
+        resolve();
+      });
+    
+      setOpen((prevOpen: boolean) => !prevOpen);
     };
+  
+    
 
     const menuVars = {
         initial: {
@@ -101,10 +119,10 @@ const Navbar = () => {
     };
 
     const navLinks = [
-      { title: "Projects", href: "/projects", img: "./src/assets/posts/1.png"},
-      { title: "Services", href: "/services", img: "./src/assets/posts/2.png"},
-      { title: "Why Us?", href: "/why-us", img: "./src/assets/posts/3.png" },
-      { title: "Contact Us", href: "/contact-us", img: "./src/assets/posts/4.png" },
+      { heading: "Projects", subheading: "See our projects", imgSrc: "./src/assets/posts/1.png", href: "/projects" },
+      { heading: "Services", subheading: "Our services", imgSrc: "./src/assets/posts/2.png", href: "/services" },
+      { heading: "Why Us?", subheading: "Why choose us?", imgSrc: "./src/assets/posts/3.png", href: "/why-us" },
+      { heading: "Contact Us", subheading: "Get in touch", imgSrc: "./src/assets/posts/4.png", href: "/contact-us" },
     ];
 
     return (
@@ -141,13 +159,13 @@ const Navbar = () => {
                       >
                           {navLinks.map((link) => ( // Renamed item to link
                               <motion.button
-                              key={link.title}
+                              key={link.heading}
                               variants={item} // Apply item variants here
                               whileHover={{ scale: 1.1 }}
                               whileTap={{ scale: 0.9 }}
                               >
                               <Link to={link.href}>
-                                  {link.title}
+                                  {link.heading}
                               </Link>
                               </motion.button>
                           ))}
@@ -198,17 +216,20 @@ const Navbar = () => {
                                 animate="open"
                                 exit="initial"
                                 className="flex flex-col items-center justify-center w-full h-full space-y-8"
+                                onAnimationComplete={() => setMenuAnimationComplete(true)}
                             >
                                 {navLinks.map((link, index) => (
-                                  <div key={index} className="flex flex-row items-center justify-center w-full overflow-hidden">
-                                      <MobileNavLink title={link.title} href={link.href} setOpen={setOpen} img={link.img}/>
-                                      <motion.span
-                                        animate={{ rotate: [0, 0, 15, -15, 15, -15, 0, 0], scale: [1, 1.5, 1.5, 1.5, 1.5, 1]}}
-                                        transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-                                        style={{ display: 'inline-block', transformOrigin: 'bottom' }}
-                                      >
-                                        👋{" "}
-                                      </motion.span>
+                                  <div key={index} className={`flex flex-row items-center justify-start w-full ${!menuAnimationComplete ? 'overflow-hidden' : ' '}`}>                                      
+                                      <MobileNavLink 
+                                        heading={link.heading} 
+                                        subheading={link.subheading} 
+                                        imgSrc={link.imgSrc} 
+                                        href={link.href} 
+                                        setOpen={(open) => {
+                                          setOpen(open);
+                                          setMenuAnimationComplete(false);
+                                        }} 
+                                      />
                                   </div>
                                 ))}
                             </motion.div>
@@ -221,9 +242,10 @@ const Navbar = () => {
 };
 
 interface MobileNavLinkProps {
-    title: string;
+    heading: string;
+    imgSrc: string;
+    subheading: string;
     href: string;
-    img: string;
     setOpen: (open: boolean) => void;
   }
 
@@ -244,24 +266,123 @@ const mobileLinkVars = {
     },
   };
 
-  const imageVariants = {
-    hidden: { scale: 0, rotate: 0 },
-    visible: { scale: 1, rotate: 2.5 },
-  };
+  const MobileNavLink: React.FC<MobileNavLinkProps> = ({ heading, imgSrc, subheading, href, setOpen}) => {
+    const ref = useRef<HTMLAnchorElement | null>(null);
   
-
-  const MobileNavLink: React.FC<MobileNavLinkProps> = ({ title, href, img, setOpen }) => {
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+  
+    const mouseXSpring = useSpring(x);
+    const mouseYSpring = useSpring(y);
+  
+    const top = useTransform(mouseYSpring, [0.5, -0.5], ["40%", "60%"]);
+    const left = useTransform(mouseXSpring, [0.5, -0.5], ["60%", "70%"]);
+  
+    const handleMouseMove = (
+      e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+    ) => {
+      const rect = ref.current!.getBoundingClientRect();
+  
+      const width = rect.width;
+      const height = rect.height;
+  
+      const mouseX = e.clientX - rect.left;
+      const mouseY = e.clientY - rect.top;
+  
+      const xPct = mouseX / width - 0.5;
+      const yPct = mouseY / height - 0.5;
+  
+      x.set(xPct);
+      y.set(yPct);
+    };
+  
     return (
       <motion.div
         variants={mobileLinkVars}
-        className="flex flex-row group  border-white text-[calc(13vw)] md:text-[calc(8vw)] lg:text-[calc(5vw)] uppercase"
+        className="flex flex-row w-full text-[calc(13vw)] md:text-[calc(8vw)] lg:text-[calc(5vw)] uppercase"
       >
-        <Link to={href} onClick={() => setOpen(false)}>{title}</Link>
-        <motion.span
-          className="absolute bottom-0 left-0 w-[100%] h-[2px] bg-zinc-300 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out"
-        />
+        <Link className='w-full mr-8 ml-8' to={href} onClick={() => setOpen(false)}>
+          <motion.a
+            href={href}
+            ref={ref}
+            onMouseMove={handleMouseMove}
+            initial="initial"
+            whileHover="whileHover"
+            className="group relative w-full flex items-center justify-between border-b-2 border-neutral-400 py-4 transition-colors duration-500 hover:border-neutral-50 md:py-8"
+          >
+            <div>
+              <motion.span
+                variants={{
+                  initial: { x: 0 },
+                  whileHover: { x: -16 },
+                }}
+                transition={{
+                  type: "spring",
+                  staggerChildren: 0.075,
+                  delayChildren: 0.25,
+                }}
+                className="relative z-10 block text-4xl font-bold text-neutral-400 transition-colors duration-500 group-hover:text-neutral-50 md:text-6xl"
+              >
+                {[...heading].map((l, i) => (
+                  <motion.span
+                    key={i}
+                    variants={{
+                      initial: { x: 0 },
+                      whileHover: { x: 16 },
+                    }}
+                    transition={{ type: "spring" }}
+                    className="inline-block"
+                  >
+                    {l === ' ' ? '\u00A0' : l}
+                  </motion.span>
+                ))}
+              </motion.span>
+              <span className="relative z-10 mt-2 block text-base text-neutral-400 transition-colors duration-500 group-hover:text-neutral-50">
+                {subheading}
+              </span>
+            </div>
+      
+            <motion.img
+              style={{
+                top,
+                left,
+                translateX: "-0%",
+                translateY: "-50%",
+              }}
+              variants={{
+                initial: { scale: 0, rotate: "-12.5deg" },
+                whileHover: { scale: 1, rotate: "12.5deg" },
+              }}
+              transition={{ type: "spring" }}
+              src={imgSrc}
+              className="absolute z-0 h-24 w-32 rounded-lg object-cover md:h-48 md:w-64"
+              alt={`Image representing a link for ${heading}`}
+            />
+      
+            <motion.div
+              variants={{
+                initial: {
+                  x: "25%",
+                  opacity: 0,
+                },
+                whileHover: {
+                  x: "0%",
+                  opacity: 1,
+                },
+              }}
+              transition={{ type: "spring" }}
+              className="relative z-10 p-4"
+            >
+              <FiArrowRight className="text-5xl text-neutral-50" />
+            </motion.div>
+
+          </motion.a>
+        </Link>
+
       </motion.div>
     );
   };
+
+
   
 export default Navbar;

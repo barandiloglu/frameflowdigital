@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { motion, useAnimation, useScroll, AnimatePresence } from 'framer-motion';
+import { MotionProps, motion, useAnimation, useScroll, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { twMerge } from "tailwind-merge";
 import { FiArrowRight, FiMail, FiMapPin } from "react-icons/fi";
@@ -8,21 +8,6 @@ import transition from "../transition";
 
 import '../index.css'; // Ensure you have this import to apply the custom CSS
 import '../css/HomePage.css'
-
-const texts = [
-  {
-    title: 'STAND OUT IN THE DIGITAL STAMPEDE.',
-    content: "FrameFlow doesn't just build brands, we cultivate captivating experiences. Through strategic content creation, flawless web design, and meticulous social media management, we elevate your brand identity and propel it toward unparalleled success.",
-  },
-  {
-    title: 'QUALITY OVER SPEED, EVERY TIME.',
-    content: "Quality over speed, every time. We won't rush through a project just to meet a deadline. We're all about taking the time to understand your brand, who you're trying to reach, and what you want to achieve online.",
-  },
-  {
-    title: 'THE BOUTIQUE APPROACH.',
-    content: "Unlike large agencies, we offer personalized attention and a deep dive into your brand's unique story. We believe in quality over quantity, ensuring your campaigns resonate with your target audience.",
-  }
-];
 
 const HomePage = () => {
     const letters2 = Array.from("THE CONTENT");
@@ -343,35 +328,39 @@ const HomePage = () => {
     );
 };
 
-const Block = ({ className, ...rest }) => {
-    return (
-      <motion.div
-        variants={{
-          initial: {
-            scale: 0.5,
-            y: 50,
-            opacity: 0,
-          },
-          animate: {
-            scale: 1,
-            y: 0,
-            opacity: 1,
-          },
-        }}
-        transition={{
-          type: "spring",
-          mass: 3,
-          stiffness: 400,
-          damping: 50,
-        }}
-        className={twMerge(
-          "col-span-4 rounded-lg border border-zinc-700 bg-zinc-800 p-6",
-          className
-        )}
-        {...rest}
-      />
-    );
-  };
+type BlockProps = {
+  className?: string;
+} & MotionProps;
+
+const Block = ({ className, ...rest }: BlockProps) => {
+  return (
+    <motion.div
+      variants={{
+        initial: {
+          scale: 0.5,
+          y: 50,
+          opacity: 0,
+        },
+        animate: {
+          scale: 1,
+          y: 0,
+          opacity: 1,
+        },
+      }}
+      transition={{
+        type: "spring",
+        mass: 3,
+        stiffness: 400,
+        damping: 50,
+      }}
+      className={twMerge(
+        "col-span-4 rounded-lg border border-zinc-700 bg-zinc-800 p-6",
+        className
+      )}
+      {...rest}
+    />
+  );
+};
   
   const HeaderBlock = () => (
     <Block className="col-span-12 row-span-2 md:col-span-6 font-alata">
@@ -487,7 +476,7 @@ const Block = ({ className, ...rest }) => {
     </Block>
   );
   
-  const EmailListBlock = () => (
+  {/* const EmailListBlock = () => (
     <Block className="col-span-12 md:col-span-9">
       <p className="mb-3 text-lg">Join my mailing list</p>
       <form
@@ -507,7 +496,7 @@ const Block = ({ className, ...rest }) => {
         </button>
       </form>
     </Block>
-  );
+  ); */}
 
   const ContactBlock = () => (
     <Block         
