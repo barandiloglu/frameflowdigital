@@ -78,8 +78,6 @@ const Navbar = () => {
     
       setOpen((prevOpen: boolean) => !prevOpen);
     };
-  
-    
 
     const menuVars = {
         initial: {
@@ -301,14 +299,14 @@ const mobileLinkVars = {
         variants={mobileLinkVars}
         className="flex flex-row w-full text-[calc(13vw)] md:text-[calc(8vw)] lg:text-[calc(5vw)] uppercase"
       >
-        <Link className='w-full mr-8 ml-8' to={href} onClick={() => setOpen(false)}>
+        <Link className='w-full ml-8 mr-8' to={href} onClick={() => setOpen(false)}>
           <motion.a
             href={href}
             ref={ref}
             onMouseMove={handleMouseMove}
             initial="initial"
             whileHover="whileHover"
-            className="group relative w-full flex items-center justify-between border-b-2 border-neutral-400 py-4 transition-colors duration-500 hover:border-neutral-50 md:py-8"
+            className="relative flex items-center justify-between w-full py-4 transition-colors duration-500 border-b-2 group border-neutral-400 hover:border-neutral-50 md:py-8"
           >
             <div>
               <motion.span
@@ -321,7 +319,7 @@ const mobileLinkVars = {
                   staggerChildren: 0.075,
                   delayChildren: 0.25,
                 }}
-                className="relative z-10 block text-4xl font-bold text-neutral-400 transition-colors duration-500 group-hover:text-neutral-50 md:text-6xl"
+                className="relative z-10 block text-4xl font-bold transition-colors duration-500 text-neutral-400 group-hover:text-neutral-50 md:text-6xl"
               >
                 {[...heading].map((l, i) => (
                   <motion.span
@@ -337,7 +335,7 @@ const mobileLinkVars = {
                   </motion.span>
                 ))}
               </motion.span>
-              <span className="relative z-10 mt-2 block text-base text-neutral-400 transition-colors duration-500 group-hover:text-neutral-50">
+              <span className="relative z-10 block mt-2 text-base transition-colors duration-500 text-neutral-400 group-hover:text-neutral-50">
                 {subheading}
               </span>
             </div>
@@ -355,7 +353,7 @@ const mobileLinkVars = {
               }}
               transition={{ type: "spring" }}
               src={imgSrc}
-              className="absolute z-0 h-24 w-32 rounded-lg object-cover md:h-48 md:w-64"
+              className="absolute z-0 object-cover w-32 h-24 rounded-lg md:h-48 md:w-64"
               alt={`Image representing a link for ${heading}`}
             />
       

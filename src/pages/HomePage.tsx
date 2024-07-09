@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { MotionProps, motion, useAnimation, useScroll, AnimatePresence } from 'framer-motion';
+import { MotionProps, motion, useAnimation, useScroll } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { twMerge } from "tailwind-merge";
 import { FiArrowRight, FiMail, FiMapPin } from "react-icons/fi";
@@ -23,25 +23,23 @@ const HomePage = () => {
     useEffect(() => {
         const updateYValues = () => {
             const width = window.innerWidth;
-            if (width < 768) { // Small screens
+            if (width < 768) { 
                 setYDown(30);
                 setYUp(-30);
-            } else if (width < 1024) { // Medium screens
+            } else if (width < 1024) {
                 setYDown(45);
                 setYUp(-45);
-            } else if (width < 1280) { // Large screens
+            } else if (width < 1280) { 
                 setYDown(50);
                 setYUp(-50);
-            } else { // Extra large screens
+            } else { 
                 setYDown(100);
                 setYUp(-100);
             }
         };
 
-        // Initial update
         updateYValues();
 
-        // Update on window resize
         window.addEventListener('resize', updateYValues);
         return () => window.removeEventListener('resize', updateYValues);
     }, []);
