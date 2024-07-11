@@ -296,7 +296,7 @@ const HomePage = () => {
                 </div>
             </section>
 
-            <section className='w-full mb-40'>
+            <section className='w-full max-[1200px]:mt-20 mb-40'>
                 <div className="min-h-screen px-4 py-12 bg-secondary">
                 <motion.div
                     initial="initial"
@@ -365,9 +365,9 @@ const Block = ({ className, ...rest }: BlockProps) => {
       <img
         src="./src/assets/logo.png"
         alt="avatar"
-        className="mb-4 size-[calc(5vw)] md:size-[calc(2vw)] lg:size-[calc(1.5vw)] xl:size-[calc(3vw)] rounded-full"
+        className="mb-4 size-[calc(5vw)] md:size-[calc(2vw)] lg:size-[calc(2.5vw)] xl:size-[calc(3vw)] rounded-full"
       />
-      <h1 className="mb-12 text-[calc(4vw)] md:text-[calc(2vw)] lg:text-[calc(1.25vw)] xl:text-[calc(1.2vw)] text-light font-medium leading-tight">
+      <h1 className="mb-12 text-[calc(2.5vw)] md:text-[calc(2vw)] lg:text-[calc(1.5vw)] xl:text-[calc(1.5vw)] text-light font-medium leading-tight">
         <span>Hello</span>
         <motion.span
           animate={{ rotate: [0, 0, 15, -15, 15, -15, 0, 0], scale: [1, 1.5, 1.5, 1.5, 1.5, 1]}}
@@ -376,7 +376,7 @@ const Block = ({ className, ...rest }: BlockProps) => {
         >
           👋{" "}
         </motion.span>
-        <span className="text-zinc-400 text-[calc(4vw)] md:text-[calc(2vw)] lg:text-[calc(1.25vw)] xl:text-[calc(1.2vw)]">
+        <span className="text-zinc-400 text-[calc(2.5vw)] md:text-[calc(2vw)] lg:text-[calc(1.5vw)] xl:text-[calc(1.5vw)]">
          {" "} Tell us your vision for your brand, and we will collaborate with you to develop a customized strategy that propels you forward in the digital landscape. 
         </span>
       </h1>
@@ -449,7 +449,7 @@ const Block = ({ className, ...rest }: BlockProps) => {
   
   const AboutBlock = () => {
     return (
-      <Block className="flex flex-col space-y-2 col-span-12 text-3xl leading-snug bg-primary p-8 font-alata text-[calc(4vw)] md:text-[calc(1.5vw)] lg:text-[calc(1vw)] xl:text-[calc(1.2vw)]">
+      <Block className="flex flex-col space-y-2 col-span-12 leading-snug bg-primary p-8 font-alata text-[calc(2.5vw)] md:text-[calc(1.5vw)] lg:text-[calc(1.5vw)] xl:text-[calc(1.5vw)]">
         <span className="font-bold text-secondary">
           STAND OUT IN THE DIGITAL STAMPEDE.
         </span>
@@ -470,7 +470,7 @@ const Block = ({ className, ...rest }: BlockProps) => {
       }}
     >
       <FiMapPin className="size-[calc(6vw)] md:size-[calc(2vw)] lg:size-[calc(1.5vw)] xl:size-[calc(1.75vw)] mb-4 font-bold font-alata text-light" />
-      <p className="text-[calc(6vw)] md:text-[calc(2vw)] lg:text-[calc(1.25vw)] font-bold text-center text-light">Toronto</p>
+      <p className="text-[calc(5vw)] md:text-[calc(2vw)] lg:text-[calc(1.25vw)] font-bold text-center text-light">Toronto</p>
     </Block>
   );
   
@@ -505,7 +505,7 @@ const Block = ({ className, ...rest }: BlockProps) => {
     >
       <button
         type="submit"
-        className="flex items-center gap-2 rounded bg-zinc-800 w-full px-2 py-8 font-medium text-light text-[calc(4vw)] md:text-[calc(1.5vw)] lg:text-[calc(1vw)] xl:text-[calc(1.2vw)]"
+        className="flex items-center gap-2 rounded bg-zinc-800 w-full px-2 py-8 font-medium text-light text-[calc(2.5vw)] md:text-[calc(1.5vw)] lg:text-[calc(1vw)] xl:text-[calc(1.5vw)]"
       >
         Let FrameFlow be the architect of your digital presence.
       </button>

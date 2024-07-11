@@ -1,20 +1,29 @@
 import transition from "../transition";
-import { motion, useAnimation } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { motion, useAnimation, useScroll, useTransform } from 'framer-motion';
+import { useEffect, useState, useRef } from 'react';
 import { GoArrowUpRight } from "react-icons/go";
+import { FiArrowUpRight } from "react-icons/fi";
+
+const socialMediaRef = useRef<HTMLDivElement>(null);
+const contentCreationRef = useRef<HTMLDivElement>(null);
+const seoRef = useRef<HTMLDivElement>(null);
+const webRef = useRef<HTMLDivElement>(null);
+const pvRef = useRef<HTMLDivElement>(null);
+const editRef = useRef<HTMLDivElement>(null);
 
 const services = [
-    { heading: "Social Media Management", subheading: "See our projects", imgSrc: "./src/assets/posts/1.png", href: "/projects" },
-    { heading: "Content Creation", subheading: "Our services", imgSrc: "./src/assets/posts/2.png", href: "/services" },
-    { heading: "SEO (SEARCH ENGINE OPTIMIZATION)", subheading: "Why choose us?", imgSrc: "./src/assets/posts/3.png", href: "/why-us" },
-    { heading: "WEB DESIGN", subheading: "Get in touch", imgSrc: "./src/assets/posts/4.png", href: "/contact-us" },
-    { heading: "PHOTOGRAPHY / VIDEOGRAPHY", subheading: "Get in touch", imgSrc: "./src/assets/posts/4.png", href: "/contact-us" },
-    { heading: "PHOTO / VIDEO EDITING", subheading: "Get in touch", imgSrc: "./src/assets/posts/4.png", href: "/contact-us" },
-
+    { heading: "SOCIAL MEDIA MANAGEMENT", subheading: "See our projects", imgSrc: "./src/assets/services/1.png", scrollToRef: socialMediaRef},
+    { heading: "CONTENT CREATION", subheading: "Our services", imgSrc: "./src/assets/services/2.png", scrollToRef: contentCreationRef},
+    { heading: "SEARCH ENGINE OPTIMIZATION", subheading: "Why choose us?", imgSrc: "./src/assets/services/3.png", scrollToRef: seoRef},
+    { heading: "WEB DESIGN", subheading: "Get in touch", imgSrc: "./src/assets/services/4.png", scrollToRef: webRef},
+    { heading: "PHOTOGRAPHY/VIDEOGRAPHY", subheading: "Get in touch", imgSrc: "./src/assets/services/5.png", scrollToRef: pvRef},
+    { heading: "PHOTO/VIDEO EDITING", subheading: "Get in touch", imgSrc: "./src/assets/services/7.png", scrollToRef: editRef},
   ];
 
 const Services = () => {
     const controls = useAnimation();
+
+    const { scrollYProgress } = useScroll();
 
     useEffect(() => {
         controls.start({
@@ -57,54 +66,232 @@ const Services = () => {
                 </div>
             </section> 
 
-            <section className="w-full flex flex-col">
-                <div className="w-full flex flex-row items-center justify-center space-x-8">
-                    <DividedBlock />
-                    <DividedBlock />
-                    <DividedBlock />
+            <section className="flex flex-col w-full mt-20 mb-20">
+                <div className="grid w-full grid-cols-2 gap-8 px-8 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 justify-items-center">
+                    {services.map((service, index) => (
+                        <DividedBlock key={index} heading={service.heading} subheading={service.subheading} imgSrc={service.imgSrc} scrollToRef={service.scrollToRef} />
+                    ))}
                 </div>
-                <div className="w-full flex flex-row items-center justify-center space-x-8 mt-8">
-                    <DividedBlock />
-                    <DividedBlock />
-                    <DividedBlock />
+            </section>    
+
+            <section className="flex flex-col w-full">
+                <div className="bg-secondary text-light">
+                    <TextParallaxContent
+                        imgUrl="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        subheading="Collaborate"
+                        heading="SOCIAL MEDIA MANAGEMENT"
+                        scrollToRef={socialMediaRef}
+                    >
+                        <ExampleContent />
+                    </TextParallaxContent>
+                    <TextParallaxContent
+                        imgUrl="https://images.unsplash.com/photo-1530893609608-32a9af3aa95c?q=80&w=2564&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        subheading="Quality"
+                        heading="CONTENT CREATION"
+                        scrollToRef={contentCreationRef}
+                    >
+                        <ExampleContent />
+                    </TextParallaxContent>
+                    <TextParallaxContent
+                        imgUrl="https://images.unsplash.com/photo-1504610926078-a1611febcad3?q=80&w=2416&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        subheading="Modern"
+                        heading="SEARCH ENGINE OPTIMIZATION"
+                        scrollToRef={seoRef}
+                    >
+                        <ExampleContent />
+                    </TextParallaxContent>
+                    <TextParallaxContent
+                        imgUrl="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        subheading="Collaborate"
+                        heading="WEB DESIGN"
+                        scrollToRef={webRef}
+                    >
+                        <ExampleContent />
+                    </TextParallaxContent>
+                    <TextParallaxContent
+                        imgUrl="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        subheading="Collaborate"
+                        heading="PHOTOGRAPGY / VIDEOGRAPHY"
+                        scrollToRef={pvRef}
+                    >
+                        <ExampleContent />
+                    </TextParallaxContent>
+                    <TextParallaxContent
+                        imgUrl="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        subheading="Collaborate"
+                        heading="PHOTO / VIDEO EDITING"
+                        scrollToRef={editRef}
+                    >
+                        <ExampleContent />
+                    </TextParallaxContent>
                 </div>
-            </section>           
+            </section>
+
+            <motion.div
+                className="z-10 progress-bar"
+                style={{ scaleX: scrollYProgress }}
+            />       
         </div>
     );
 };
 
-const DividedBlock: React.FC = () => {
+interface Service {
+    heading: string;
+    subheading: string;
+    imgSrc: string;
+    scrollToRef: React.RefObject<HTMLDivElement>;
+}
+
+const DividedBlock: React.FC<Service> = ({ heading, subheading, imgSrc, scrollToRef }) => {
     const [isHovered, setIsHovered] = useState(false);
+
+    const handleClick = () => {
+        if (scrollToRef.current) {
+        scrollToRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
     return (
       <motion.div
-        className="relative flex flex-col w-[calc(20vw)] h-[calc(20vw)]"
+        className="flex flex-col w-[calc(45vw)] h-[calc(45vw)] sm:w-[calc(45vw)] sm:h-[calc(45vw)] md:w-[calc(30vw)] md:h-[calc(30vw)] lg:w-[calc(30vw)] lg:h-[calc(30vw)] xl:w-[calc(30vw)] xl:h-[calc(30vw)] "
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
         <div className="relative z-10 flex flex-col h-full">
-          <div className="flex items-center justify-center flex-1 bg-black text-light">
-            <h1>See</h1>
+          <div className="flex items-center justify-center flex-1 w-full bg-black text-light">
+            <h1 className="w-full items-center justify-center flex h-full max-[1024px]:text-[calc(2vw)] min-[1024px]:text-[calc(1.5vw)] font-lemonmilk">{heading}</h1>
           </div>
           <div className="flex flex-row w-full h-1/2">
             <div className="flex w-1/2">
               <motion.img
-                src="src/assets/posts/1.png"
-                className="absolute inset-0 object-cover w-full h-full"
+                src={imgSrc}
+                className="absolute inset-0 w-full h-full"
                 initial={{ scale: 1, x: 0, y: 0 }}
                 animate={isHovered ? { scale: 0.5, x: '-25%', y: '25%' } : { scale: 1, x: 0, y: 0 }}
-                transition={{ duration: 0.2 }}
+                transition={{ duration: 0.3, ease: 'easeIn' }}
                 alt="Background"
                 />
             </div>
             <div className="flex flex-row items-center justify-center w-1/2 text-black bg-light">
-              <button className="flex w-full h-full flex-row items-center justify-center">MORE <GoArrowUpRight /></button>
+              <button className="flex flex-row items-center max-[1024px]:text-[calc(2vw)] min-[1024px]:text-[calc(1.5vw)] justify-center w-full h-full font-alata">MORE <GoArrowUpRight className="font-bold"/></button>
             </div>
           </div>
         </div>
       </motion.div>
     );
-  };
+};
+
+interface TextParallaxContentProps {
+    imgUrl: string;
+    subheading: string;
+    heading: string;
+    children: React.ReactNode;
+    scrollToRef: React.RefObject<HTMLDivElement>;
+}
+
+const TextParallaxContent: React.FC<TextParallaxContentProps> = ({ imgUrl, subheading, heading, children, scrollToRef }) => {
+    return (
+        <div ref={scrollToRef}>
+            <div className="relative h-[150vh]">
+                <StickyImage imgUrl={imgUrl} />
+                <OverlayCopy heading={heading} subheading={subheading} />
+            </div>
+            {children}
+        </div>
+    );
+};
+
+interface StickyImageProps {
+    imgUrl: string;
+}
+
+const StickyImage: React.FC<StickyImageProps> = ({ imgUrl }) => {
+    const targetRef = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({
+      target: targetRef,
+      offset: ["end end", "end start"],
+    });
+  
+    const scale = useTransform(scrollYProgress, [0, 1], [1, 0.85]);
+    const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+  
+    return (
+      <motion.div
+        style={{
+          backgroundImage: `url(${imgUrl})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          height: `calc(100vh`,
+          top: 0,
+          scale,
+        }}
+        ref={targetRef}
+        className="sticky z-0 overflow-hidden rounded-2xl"
+      >
+        <motion.div
+          className="absolute inset-0 bg-neutral-950/70"
+          style={{
+            opacity,
+          }}
+        />
+      </motion.div>
+    );
+};
+
+interface OverlayCopyProps {
+    subheading: string;
+    heading: string;
+}
+
+const OverlayCopy: React.FC<OverlayCopyProps> = ({ subheading, heading }) => {
+    const targetRef = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({
+      target: targetRef,
+      offset: ["start end", "end start"],
+    });
+  
+    const y = useTransform(scrollYProgress, [0, 1], [250, -250]);
+    const opacity = useTransform(scrollYProgress, [0.25, 0.5, 0.75], [0, 1, 0]);
+  
+    return (
+      <motion.div
+        style={{
+          y,
+          opacity,
+        }}
+        ref={targetRef}
+        className="absolute top-0 left-0 flex flex-col items-center justify-center w-full h-screen text-white"
+      >
+        <p className="mb-2 text-xl text-center md:mb-4 md:text-3xl">
+          {subheading}
+        </p>
+        <p className="text-4xl font-bold text-center md:text-7xl">{heading}</p>
+      </motion.div>
+    );
+};
+
+const ExampleContent: React.FC = () => (
+  <div className="grid max-w-5xl grid-cols-1 gap-8 px-4 pt-12 pb-24 mx-auto md:grid-cols-12">
+    <h2 className="col-span-1 text-3xl font-bold md:col-span-4">
+      Additional content explaining the above card here
+    </h2>
+    <div className="col-span-1 md:col-span-8">
+      <p className="mb-4 text-xl text-light md:text-2xl">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi,
+        blanditiis soluta eius quam modi aliquam quaerat odit deleniti minima
+        maiores voluptate est ut saepe accusantium maxime doloremque nulla
+        consectetur possimus.
+      </p>
+      <p className="mb-8 text-xl text-light md:text-2xl">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
+        reiciendis blanditiis aliquam aut fugit sint.
+      </p>
+      <button className="w-full py-4 text-xl text-white transition-colors rounded bg-neutral-900 px-9 hover:bg-neutral-700 md:w-fit">
+        Learn more <FiArrowUpRight className="inline" />
+      </button>
+    </div>
+  </div>
+);
 
 
 
