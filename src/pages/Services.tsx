@@ -4,26 +4,26 @@ import { useEffect, useState, useRef } from 'react';
 import { GoArrowUpRight } from "react-icons/go";
 import { FiArrowUpRight } from "react-icons/fi";
 
-const socialMediaRef = useRef<HTMLDivElement>(null);
-const contentCreationRef = useRef<HTMLDivElement>(null);
-const seoRef = useRef<HTMLDivElement>(null);
-const webRef = useRef<HTMLDivElement>(null);
-const pvRef = useRef<HTMLDivElement>(null);
-const editRef = useRef<HTMLDivElement>(null);
-
-const services = [
-    { heading: "SOCIAL MEDIA MANAGEMENT", subheading: "See our projects", imgSrc: "./src/assets/services/1.png", scrollToRef: socialMediaRef},
-    { heading: "CONTENT CREATION", subheading: "Our services", imgSrc: "./src/assets/services/2.png", scrollToRef: contentCreationRef},
-    { heading: "SEARCH ENGINE OPTIMIZATION", subheading: "Why choose us?", imgSrc: "./src/assets/services/3.png", scrollToRef: seoRef},
-    { heading: "WEB DESIGN", subheading: "Get in touch", imgSrc: "./src/assets/services/4.png", scrollToRef: webRef},
-    { heading: "PHOTOGRAPHY/VIDEOGRAPHY", subheading: "Get in touch", imgSrc: "./src/assets/services/5.png", scrollToRef: pvRef},
-    { heading: "PHOTO/VIDEO EDITING", subheading: "Get in touch", imgSrc: "./src/assets/services/7.png", scrollToRef: editRef},
-  ];
-
 const Services = () => {
     const controls = useAnimation();
 
     const { scrollYProgress } = useScroll();
+
+    const socialMediaRef = useRef<HTMLDivElement>(null);
+    const contentCreationRef = useRef<HTMLDivElement>(null);
+    const seoRef = useRef<HTMLDivElement>(null);
+    const webRef = useRef<HTMLDivElement>(null);
+    const pvRef = useRef<HTMLDivElement>(null);
+    const editRef = useRef<HTMLDivElement>(null);
+
+    const services = [
+        { heading: "SOCIAL MEDIA MANAGEMENT", subheading: "See our projects", imgSrc: "./src/assets/services/1.png", scrollToRef: socialMediaRef},
+        { heading: "CONTENT CREATION", subheading: "Our services", imgSrc: "./src/assets/services/2.png", scrollToRef: contentCreationRef},
+        { heading: "SEARCH ENGINE OPTIMIZATION", subheading: "Why choose us?", imgSrc: "./src/assets/services/3.png", scrollToRef: seoRef},
+        { heading: "WEB DESIGN", subheading: "Get in touch", imgSrc: "./src/assets/services/4.png", scrollToRef: webRef},
+        { heading: "PHOTOGRAPHY/VIDEOGRAPHY", subheading: "Get in touch", imgSrc: "./src/assets/services/5.png", scrollToRef: pvRef},
+        { heading: "PHOTO/VIDEO EDITING", subheading: "Get in touch", imgSrc: "./src/assets/services/7.png", scrollToRef: editRef},
+    ];
 
     useEffect(() => {
         controls.start({
@@ -173,7 +173,12 @@ const DividedBlock: React.FC<Service> = ({ heading, subheading, imgSrc, scrollTo
                 />
             </div>
             <div className="flex flex-row items-center justify-center w-1/2 text-black bg-light">
-              <button className="flex flex-row items-center max-[1024px]:text-[calc(2vw)] min-[1024px]:text-[calc(1.5vw)] justify-center w-full h-full font-alata">MORE <GoArrowUpRight className="font-bold"/></button>
+                <button
+                    className="flex flex-row items-center max-[1024px]:text-[calc(2vw)] min-[1024px]:text-[calc(1.5vw)] justify-center w-full h-full font-alata"
+                    onClick={handleClick}
+                >
+                    MORE <GoArrowUpRight className="font-bold" />
+                </button>
             </div>
           </div>
         </div>
@@ -292,7 +297,5 @@ const ExampleContent: React.FC = () => (
     </div>
   </div>
 );
-
-
 
 export default transition(Services);

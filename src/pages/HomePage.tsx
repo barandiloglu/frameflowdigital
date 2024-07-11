@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { MotionProps, motion, useAnimation, useScroll } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { twMerge } from "tailwind-merge";
-import { FiArrowRight, FiMail, FiMapPin } from "react-icons/fi";
+import { FiArrowRight, FiMapPin } from "react-icons/fi";
 import { SiInstagram, SiLinkedin, SiTiktok } from "react-icons/si";
 import transition from "../transition";
 
-import '../index.css'; // Ensure you have this import to apply the custom CSS
+import '../index.css';
 import '../css/HomePage.css'
 
 const HomePage = () => {
