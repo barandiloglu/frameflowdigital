@@ -2,7 +2,7 @@ import transition from "../transition";
 import { motion, useAnimation, useScroll, useTransform } from 'framer-motion';
 import { useEffect, useState, useRef } from 'react';
 import { GoArrowUpRight } from "react-icons/go";
-import { FiArrowUpRight } from "react-icons/fi";
+import { FaArrowDown } from 'react-icons/fa';
 
 const Services = () => {
     const controls = useAnimation();
@@ -82,7 +82,21 @@ const Services = () => {
                         heading="SOCIAL MEDIA MANAGEMENT"
                         scrollToRef={socialMediaRef}
                     >
-                        <ExampleContent />
+                          <div className="grid max-w-5xl grid-cols-1 gap-8 px-4 pt-12 pb-24 mx-auto md:grid-cols-12">
+                            <h2 className="col-span-1 text-3xl font-bold md:col-span-4">
+                              SOCIAL MEDIA MANAGEMENT
+                            </h2>
+                            <div className="col-span-1 md:col-span-8">
+                              <p className="mb-4 text-xl text-light md:text-2xl">
+                                Social media is more than just posting; it's about creating meaningful interactions and fostering a community around your brand. 
+                                With FrameFlow's social media management services, we take a holistic approach, crafting engaging content, managing your social channels, 
+                                and implementing targeted strategies to grow your audience and drive engagement. 
+                              </p>
+                              <p className="mb-8 text-xl text-light md:text-2xl">
+                                From content calendars to analytics, we handle every aspect of your social media presence with creativity and precision.
+                              </p>
+                            </div>
+                          </div>
                     </TextParallaxContent>
                     <TextParallaxContent
                         imgUrl="https://images.unsplash.com/photo-1530893609608-32a9af3aa95c?q=80&w=2564&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -90,7 +104,21 @@ const Services = () => {
                         heading="CONTENT CREATION"
                         scrollToRef={contentCreationRef}
                     >
-                        <ExampleContent />
+                          <div className="grid max-w-5xl grid-cols-1 gap-8 px-4 pt-12 pb-24 mx-auto md:grid-cols-12">
+                            <h2 className="col-span-1 text-3xl font-bold md:col-span-4">
+                              CONTENT CREATION
+                            </h2>
+                            <div className="col-span-1 md:col-span-8">
+                              <p className="mb-4 text-xl text-light md:text-2xl">
+                                At FrameFlow, our content creation services go beyond just words on a page. 
+                                We delve into the heart of your brand, crafting narratives that resonate with your audience. 
+                              </p>
+                              <p className="mb-8 text-xl text-light md:text-2xl">
+                                From engaging blog posts and informative articles to compelling website copy and captivating social media content, 
+                                we ensure every word reflects your brand's personality and drives meaningful connections with your audience.
+                              </p>
+                            </div>
+                          </div>
                     </TextParallaxContent>
                     <TextParallaxContent
                         imgUrl="https://images.unsplash.com/photo-1504610926078-a1611febcad3?q=80&w=2416&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -98,7 +126,21 @@ const Services = () => {
                         heading="SEARCH ENGINE OPTIMIZATION"
                         scrollToRef={seoRef}
                     >
-                        <ExampleContent />
+                          <div className="grid max-w-5xl grid-cols-1 gap-8 px-4 pt-12 pb-24 mx-auto md:grid-cols-12">
+                            <h2 className="col-span-1 text-3xl font-bold md:col-span-4">
+                              SEARCH ENGINE OPTIMIZATION
+                            </h2>
+                            <div className="col-span-1 md:col-span-8">
+                              <p className="mb-4 text-xl text-light md:text-2xl">
+                                In the vast digital landscape, standing out is crucial, and that's where our SEO expertise shines. 
+                                We meticulously analyze search trends, conduct in-depth keyword research, and optimize your website for top search engine rankings. 
+                              </p>
+                              <p className="mb-8 text-xl text-light md:text-2xl">
+                                Our strategic approach to SEO ensures that your brand not only gets noticed but also stays 
+                                ahead of the competition, driving organic traffic and increasing your online visibility.
+                              </p>
+                            </div>
+                          </div>
                     </TextParallaxContent>
                     <TextParallaxContent
                         imgUrl="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -106,7 +148,20 @@ const Services = () => {
                         heading="WEB DESIGN"
                         scrollToRef={webRef}
                     >
-                        <ExampleContent />
+                          <div className="grid max-w-5xl grid-cols-1 gap-8 px-4 pt-12 pb-24 mx-auto md:grid-cols-12">
+                            <h2 className="col-span-1 text-3xl font-bold md:col-span-4">
+                              WEB DESIGN
+                            </h2>
+                            <div className="col-span-1 md:col-span-8">
+                              <p className="mb-4 text-xl text-light md:text-2xl">
+                                Your website is often the first impression customers have of your brand, and we make sure it's a lasting one. 
+                                Our web design services blend aesthetics with functionality, creating visually stunning and user-friendly websites that captivate visitors and convert them into loyal customers. 
+                              </p>
+                              <p className="mb-8 text-xl text-light md:text-2xl">
+                                Whether it's responsive design, intuitive navigation, or eye-catching visuals, we tailor every element to align with your brand identity and deliver an exceptional online experience.
+                              </p>
+                            </div>
+                          </div>
                     </TextParallaxContent>
                     <TextParallaxContent
                         imgUrl="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -114,7 +169,20 @@ const Services = () => {
                         heading="PHOTOGRAPGY / VIDEOGRAPHY"
                         scrollToRef={pvRef}
                     >
-                        <ExampleContent />
+                          <div className="grid max-w-5xl grid-cols-1 gap-8 px-4 pt-12 pb-24 mx-auto md:grid-cols-12">
+                            <h2 className="col-span-1 text-3xl font-bold md:col-span-4">
+                              PHOTOGRAPGY / VIDEOGRAPHY
+                            </h2>
+                            <div className="col-span-1 md:col-span-8">
+                              <p className="mb-4 text-xl text-light md:text-2xl">
+                                At FrameFlow, we believe in the power of visual storytelling. Our photography/videography services capture the essence of your brand in every frame. 
+                                Whether it's product photography that highlights your offerings or corporate portraits that exude professionalism, our skilled team brings your vision to life with precision and creativity. 
+                              </p>
+                              <p className="mb-8 text-xl text-light md:text-2xl">
+                                We understand the importance of visuals in conveying your brand's narrative, and our services ensure that every image and video resonates beautifully with your audience.
+                              </p>
+                            </div>
+                          </div>
                     </TextParallaxContent>
                     <TextParallaxContent
                         imgUrl="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -122,8 +190,24 @@ const Services = () => {
                         heading="PHOTO / VIDEO EDITING"
                         scrollToRef={editRef}
                     >
-                        <ExampleContent />
+                          <div className="grid max-w-5xl grid-cols-1 gap-8 px-4 pt-12 pb-24 mx-auto md:grid-cols-12">
+                            <h2 className="col-span-1 text-3xl font-bold md:col-span-4">
+                              PHOTO / VIDEO EDITING
+                            </h2>
+                            <div className="col-span-1 md:col-span-8">
+                              <p className="mb-4 text-xl text-light md:text-2xl">
+                                Video is a dynamic medium for storytelling, and our photo/video editing services transform your concepts into captivating visual narratives. 
+                                From initial concept development and scriptwriting to seamless editing and post-production effects, we breathe life into your videos with creativity and professionalism. 
+                              </p>
+                              <p className="mb-8 text-xl text-light md:text-2xl">
+                                Whether it's crafting promotional videos, informative tutorials, or compelling brand stories, our editing expertise adds a dynamic 
+                                dimension to your marketing efforts, engaging your audience and leaving a lasting impact.
+                              </p>
+                            </div>
+                          </div>
                     </TextParallaxContent>
+
+
                 </div>
             </section>
 
@@ -195,14 +279,21 @@ interface TextParallaxContentProps {
 }
 
 const TextParallaxContent: React.FC<TextParallaxContentProps> = ({ imgUrl, subheading, heading, children, scrollToRef }) => {
-    return (
-        <div ref={scrollToRef}>
-            <div className="relative h-[150vh]">
-                <StickyImage imgUrl={imgUrl} />
-                <OverlayCopy heading={heading} subheading={subheading} />
-            </div>
-            {children}
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const childrenRef = useRef<HTMLDivElement>(null);
+  
+  return (
+      <div ref={scrollToRef}>
+        <div className="relative h-[150vh]">
+          <StickyImage imgUrl={imgUrl} />
+          <div ref={overlayRef}>
+            <OverlayCopy heading={heading} subheading={subheading} />
+          </div>
         </div>
+        <div ref={childrenRef}>
+          {children}
+        </div>
+    </div>
     );
 };
 
@@ -275,27 +366,24 @@ const OverlayCopy: React.FC<OverlayCopyProps> = ({ subheading, heading }) => {
     );
 };
 
-const ExampleContent: React.FC = () => (
-  <div className="grid max-w-5xl grid-cols-1 gap-8 px-4 pt-12 pb-24 mx-auto md:grid-cols-12">
-    <h2 className="col-span-1 text-3xl font-bold md:col-span-4">
-      Additional content explaining the above card here
-    </h2>
-    <div className="col-span-1 md:col-span-8">
-      <p className="mb-4 text-xl text-light md:text-2xl">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi,
-        blanditiis soluta eius quam modi aliquam quaerat odit deleniti minima
-        maiores voluptate est ut saepe accusantium maxime doloremque nulla
-        consectetur possimus.
-      </p>
-      <p className="mb-8 text-xl text-light md:text-2xl">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
-        reiciendis blanditiis aliquam aut fugit sint.
-      </p>
-      <button className="w-full py-4 text-xl text-white transition-colors rounded bg-neutral-900 px-9 hover:bg-neutral-700 md:w-fit">
-        Learn more <FiArrowUpRight className="inline" />
-      </button>
-    </div>
-  </div>
-);
+
+const useIntersectionObserver = (callback: IntersectionObserverCallback, options: IntersectionObserverInit) => {
+  const targetRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!targetRef.current) return;
+    const observer = new IntersectionObserver(callback, options);
+    observer.observe(targetRef.current);
+
+    return () => {
+      if (targetRef.current) {
+        observer.unobserve(targetRef.current);
+      }
+    };
+  }, [callback, options]);
+
+  return targetRef;
+};
+
 
 export default transition(Services);
