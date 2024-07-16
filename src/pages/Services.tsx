@@ -67,7 +67,7 @@ const Services = () => {
             </section> 
 
             <section className="flex flex-col w-full mt-20 mb-20">
-                <div className="grid w-full grid-cols-2 gap-8 px-8 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 justify-items-center">
+                <div className="grid w-full grid-cols-2 gap-8 px-6 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 justify-items-center">
                     {services.map((service, index) => (
                         <DividedBlock key={index} heading={service.heading} subheading={service.subheading} imgSrc={service.imgSrc} scrollToRef={service.scrollToRef} />
                     ))}
@@ -243,7 +243,7 @@ const DividedBlock: React.FC<Service> = ({ heading, subheading, imgSrc, scrollTo
       >
         <div className="relative z-10 flex flex-col h-full">
           <div className="flex items-center justify-center flex-1 w-full bg-black text-light">
-            <h1 className="w-full items-center justify-center flex h-full max-[1024px]:text-[calc(2vw)] min-[1024px]:text-[calc(1.5vw)] font-lemonmilk">{heading}</h1>
+            <h1 className="w-full items-center justify-center flex h-full max-[1024px]:text-[calc(1.5vw)] min-[1024px]:text-[calc(1.5vw)] font-lemonmilk">{heading}</h1>
           </div>
           <div className="flex flex-row w-full h-1/2">
             <div className="flex w-1/2">
