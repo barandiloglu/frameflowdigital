@@ -2,7 +2,6 @@ import transition from "../transition";
 import { motion, useAnimation, useScroll, useTransform } from 'framer-motion';
 import { useEffect, useState, useRef } from 'react';
 import { GoArrowUpRight } from "react-icons/go";
-import { FaArrowDown } from 'react-icons/fa';
 
 const Services = () => {
     const controls = useAnimation();

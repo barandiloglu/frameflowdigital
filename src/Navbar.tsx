@@ -155,16 +155,16 @@ const Navbar = () => {
                           initial="hidden"
                           animate="visible"
                       >
-                          {navLinks.map((link) => ( // Renamed item to link
+                          {navLinks.slice(0, 3).map((link) => ( // Renamed item to link
                               <motion.button
                               key={link.heading}
                               variants={item} // Apply item variants here
                               whileHover={{ scale: 1.1 }}
                               whileTap={{ scale: 0.9 }}
                               >
-                              <Link to={link.href}>
-                                  {link.heading}
-                              </Link>
+                                <Link to={link.href}>
+                                    {link.heading}
+                                </Link>
                               </motion.button>
                           ))}
                           <motion.button
