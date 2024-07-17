@@ -1,5 +1,5 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { motion, useMotionValue } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import transition from "../transition";
 
 const projects = [
@@ -14,18 +14,10 @@ const projects = [
 const ONE_SECOND = 1000;
 const AUTO_DELAY = ONE_SECOND * 10;
 
-const SPRING_OPTIONS = {
-    type: "spring",
-    mass: 3,
-    stiffness: 350,
-    damping: 60,
-};
-
 const Projects = () => {
     const [imgIndex, setImgIndex] = useState(0);
     const [expanded, setExpanded] = useState(true);
     const [isChanging, setIsChanging] = useState(false);
-
 
     useEffect(() => {
         const intervalRef = setInterval(() => {
@@ -37,7 +29,6 @@ const Projects = () => {
         return () => clearInterval(intervalRef);
     }, [imgIndex, isChanging]);
 
-
     const handleImageChange = (newIndex: number) => {
         setIsChanging(true);
         setExpanded(false);
@@ -46,18 +37,29 @@ const Projects = () => {
             setTimeout(() => {
                 setExpanded(true);
                 setIsChanging(false);
-            }, 500); // Delay to ensure expansion happens after image change
-        }, 800); // Delay to allow collapse animation
+            }, 500);
+        }, 800); 
     };
 
     return (
-        <div className="flex w-full min-h-screen bg-secondary">
-            <div className=" border-white w-full overflow-hidden bg-transparent">
+        <div className="flex flex-col w-full min-h-screen bg-secondary">
+            <div className="w-full overflow-hidden bg-transparent">
                 <motion.div
                     animate={{
                         translateX: `-${imgIndex * 75}%`,
                     }}
-                    transition={SPRING_OPTIONS}
+                    transition={{ ease: 'easeInOut', duration: 0.65 }}
+                    className="flex"
+                >
+                    <Images imgIndex={imgIndex} expanded={expanded} />
+                </motion.div>
+            </div>
+            <div className="w-full overflow-hidden bg-transparent">
+                <motion.div
+                    animate={{
+                        translateX: `-${imgIndex * 75}%`,
+                    }}
+                    transition={{ ease: 'easeInOut', duration: 0.65 }}
                     className="flex"
                 >
                     <Images imgIndex={imgIndex} expanded={expanded} />
@@ -80,12 +82,12 @@ const Images = ({ imgIndex, expanded }: { imgIndex: number; expanded: boolean })
                     animate={{
                         scale: imgIndex === idx ? 1 : 1,
                     }}
-                    transition={SPRING_OPTIONS}
+                    transition={{ ease: 'easeInOut', duration: 0.65 }}
                     className="flex flex-row items-center justify-start w-[75%] h-full bg-transparent aspect-video shrink-0"
                 >
                     <div className="relative w-full overflow-hidden">
-                        <motion.div className="flex flex-row justify-start ">
-                            <motion.div className=" flex w-[45%] h-[calc(25vw)] sm:h-[calc(25vw)] md:h-[calc(25vw)] lg:h-[calc(27.5vw)] xl:h-[calc(30vw)]">
+                        <motion.div className="flex flex-row justify-start">
+                            <motion.div className="flex w-[45%] h-[calc(25vw)] sm:h-[calc(25vw)] md:h-[calc(25vw)] lg:h-[calc(27.5vw)] xl:h-[calc(30vw)]">
                                 <motion.img
                                     className="object-cover w-full"
                                     src={project.imgSrc}
@@ -93,7 +95,10 @@ const Images = ({ imgIndex, expanded }: { imgIndex: number; expanded: boolean })
                                     transition={{ type: 'spring', stiffness: 100, damping: 30, duration: 1 }}
                                 />
                             </motion.div>
-                            <motion.div className="flex bg-zinc-800 w-[45%] h-[calc(20vw)] sm:h-[calc(20vw)] md:h-[calc(20vw)] lg:h-[calc(22.5vw)] xl:h-[calc(25vw)]">
+                            <motion.div className="flex flex-col p-4 bg-zinc-800 w-[45%] h-[calc(20vw)] sm:h-[calc(20vw)] md:h-[calc(20vw)] lg:h-[calc(22.5vw)] xl:h-[calc(25vw)]">
+                                <h1 className="text-white font-lemonmilk">{project.heading}</h1>
+                                <h1 className="text-white font-lemonmilk">{project.subheading}</h1>
+                                <p className="text-white font-lemonmilk">{project.subheading}</p>
                             </motion.div>
                         </motion.div>
                     </div>
