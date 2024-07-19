@@ -111,7 +111,6 @@ const ContactUs: React.FC = () => {
   }, [showEmailInput, showMessageInput]);
 
   return (
-    <div className='flex flex-col items-center w-full min-h-screen mx-auto bg-secondary'>
         <div className="flex flex-col min-h-[calc(40vw)] p-4 mx-auto mt-20 font-mono text-gray-200 rounded-lg shadow-lg bg-zinc-800 xl:w-2/3 sm:w-full">
             <div className="flex flex-row items-center justify-between">
                 <div className='flex flex-row space-x-2'>
@@ -269,7 +268,6 @@ const ContactUs: React.FC = () => {
               </div>
             )}
         </div>
-    </div>
   );
 };
 

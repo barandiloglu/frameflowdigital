@@ -12,26 +12,25 @@ import ContactUs from './pages/ContactUs';
 import { InitialLoadProvider } from './InitialLoadContext';
 
 import './App.css'
+
 function App() {
   const location = useLocation();
 
   return (
     <InitialLoadProvider>
       <>
-          <Navbar />
-          <AnimatePresence mode="wait">
-            <Routes location={location} key={location.pathname}>
-              <Route index element={<HomePage />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/why-us" element={<WhyUs />} />
-              <Route path="/contact-us" element={<ContactUs />} />
-            </Routes>
-          </AnimatePresence>
-
+        <Navbar />
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route index element={<HomePage />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/why-us" element={<WhyUs />} />
+            <Route path="/contact-us" element={<ContactUs />} />
+          </Routes>
+        </AnimatePresence>
       </>
     </InitialLoadProvider>
-
   );
 }
 
