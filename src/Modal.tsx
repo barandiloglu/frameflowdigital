@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import './css/ContactUs.css'; 
+import { IoIosClose } from "react-icons/io";
 
 interface ModalProps {
   isOpen: boolean;
@@ -9,9 +11,15 @@ interface ModalProps {
 }
 
 const modalVariants = {
-  hidden: { opacity: 0, y: "-100vh" },
-  visible: { opacity: 1, y: "0" },
-  exit: { opacity: 0, y: "100vh" },
+  hidden: { opacity: 0,},
+  visible: { opacity: 1},
+  exit: { opacity: 0},
+};
+
+const contactVariants = {
+  hidden: { scale: 0,},
+  visible: { scale: 1},
+  exit: { scale: 0},
 };
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
@@ -24,6 +32,27 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log(email);
+  };
+
+  const handleSendEmail = () => {
+    const templateParams = {
+      from_name: name,
+      to_name: 'Frame Flow',
+      from_email: email,
+      reply_to: email,
+      message,
+  };
+
+    emailjs.send(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID, 
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID, 
+      templateParams, 
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    ).then((response) => {
+        console.log('Email sent successfully:', response.status, response.text);
+    }, (error) => {
+        console.error('There was an error sending the email:', error);
+    });
   };
 
   const [inputCountName, setInputCountName] = useState(0);
@@ -130,13 +159,11 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
       exit="exit"
       variants={modalVariants}
     >
-        <button
-          className="absolute top-0 right-0 mt-4 mr-4 text-xl"
-          onClick={onClose}
+        <motion.div 
+          className="flex flex-col min-h-[calc(40vw)] p-4 mx-auto mt-20 font-mono text-gray-200 rounded-lg shadow-lg bg-zinc-800 xl:w-2/3 sm:w-full"
+          variants={contactVariants}
+          transition={{ type: 'spring', stiffness: 225, damping: 20, ease: "easeInOut", duration: 0.5 }}
         >
-          ✖
-        </button>
-        <div className="flex flex-col min-h-[calc(40vw)] p-4 mx-auto mt-20 font-mono text-gray-200 rounded-lg shadow-lg bg-zinc-800 xl:w-2/3 sm:w-full">
             <div className="flex flex-row items-center justify-between">
                 <div className='flex flex-row space-x-2'>
                     <div className="flex items-center justify-center w-4 h-4 bg-red-500 rounded-full">
@@ -144,7 +171,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
                             className="text-red-500 text-md hover:text-red-950"
                             onClick={onClose}
                         >
-                            ✖
+                            <IoIosClose />
                         </button>
                 </div>
 
@@ -298,10 +325,10 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
             {showButtons && (
               <div className='flex flex-row justify-between w-1/2 mt-4'>
                   <button className='flex px-12 py-2 bg-red-500 rounded-lg hover:bg-red-600' onClick={resetForm}>Start Over</button>
-                  <button className='flex px-12 py-2 bg-green-600 rounded-lg hover:bg-green-700'>Looks Good!</button>
+                  <button className='flex px-12 py-2 bg-green-600 rounded-lg hover:bg-green-700' onClick={handleSendEmail}>Looks Good!</button>
               </div>
             )}
-        </div>
+        </motion.div>
     </motion.div>
   );
 };
