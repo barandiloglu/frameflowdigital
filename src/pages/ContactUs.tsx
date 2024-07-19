@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import transition from "../transition";
 import { motion } from 'framer-motion';
-import '../css/ContactUs.css'; // Import the custom CSS
+import '../css/ContactUs.css'; 
 
 const ContactUs: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -10,7 +10,6 @@ const ContactUs: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission logic
     console.log(email);
   };
 
@@ -65,7 +64,7 @@ const ContactUs: React.FC = () => {
       if (event.key === 'Enter' && message.trim() !== '') {
         setShowMessageInput(false);
         setShowFinalConfirmation(true);
-        setShowButtons(true); // Show buttons when the form is completely filled
+        setShowButtons(true);
       } else if (event.key === 'Backspace') {
         if (inputCountMessage > 0) {
           setInputCountMessage(inputCountMessage - 1);

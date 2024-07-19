@@ -6,15 +6,15 @@ import logo from './assets/logo.png';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
 import { FiArrowRight } from "react-icons/fi";
-import Modal from './Modal'; // Import the Modal component
-import ContactUs from './pages/ContactUs'; // Import the ContactUs component
+import Modal from './Modal'; 
+import ContactUs from './pages/ContactUs'; 
 
 const Navbar = () => {
   const textControls = useAnimation();
   const logoControls = useAnimation();
   const [menuAnimationComplete, setMenuAnimationComplete] = useState(false);
   const [open, setOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false); // State to manage modal visibility
+  const [isModalOpen, setIsModalOpen] = useState(false); 
 
   useEffect(() => {
     const sequence = async () => {
@@ -25,7 +25,7 @@ const Navbar = () => {
         transition: { duration: 0.6, ease: 'easeInOut' }
       });
       await textControls.start({
-        x: 45, // Move to the right by 45px
+        x: 45, 
         transition: { duration: 0.6, ease: 'easeInOut' }
       });
       logoControls.start({
@@ -128,7 +128,7 @@ const Navbar = () => {
                 alt="Logo"
                 initial={{ opacity: 0 }}
                 animate={logoControls}
-                className="flex w-8 h-8 ml-2" // Adjust the size and position as needed
+                className="flex w-8 h-8 ml-2"
               />
               <motion.div
                 initial={{ scale: 1, opacity: 0 }}
@@ -163,7 +163,7 @@ const Navbar = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 className="px-4 py-2 bg-primary text-light"
-                onClick={() => setIsModalOpen(true)} // Open the modal on click
+                onClick={() => setIsModalOpen(true)} 
               >
                 CONTACT US
               </motion.button>

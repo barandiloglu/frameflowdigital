@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import './css/ContactUs.css'; // Import the custom CSS
+import './css/ContactUs.css'; 
 
 interface ModalProps {
   isOpen: boolean;
@@ -23,7 +23,6 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission logic
     console.log(email);
   };
 
@@ -78,7 +77,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
       if (event.key === 'Enter' && message.trim() !== '') {
         setShowMessageInput(false);
         setShowFinalConfirmation(true);
-        setShowButtons(true); // Show buttons when the form is completely filled
+        setShowButtons(true); 
       } else if (event.key === 'Backspace') {
         if (inputCountMessage > 0) {
           setInputCountMessage(inputCountMessage - 1);
