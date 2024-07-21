@@ -215,6 +215,7 @@ const Navbar = () => {
                         setOpen(open);
                         setMenuAnimationComplete(false);
                       }}
+                      setIsModalOpen={setIsModalOpen}
                     />
                   </div>
                 ))}
@@ -237,6 +238,7 @@ interface MobileNavLinkProps {
   subheading: string;
   href: string;
   setOpen: (open: boolean) => void;
+  setIsModalOpen: (isOpen: boolean) => void;
 }
 
 const mobileLinkVars = {
@@ -256,7 +258,7 @@ const mobileLinkVars = {
   },
 };
 
-const MobileNavLink: React.FC<MobileNavLinkProps> = ({ heading, imgSrc, subheading, href, setOpen }) => {
+const MobileNavLink: React.FC<MobileNavLinkProps> = ({ heading, imgSrc, subheading, href, setOpen, setIsModalOpen }) => {
   const ref = useRef<HTMLAnchorElement | null>(null);
 
   const x = useMotionValue(0);
@@ -286,12 +288,20 @@ const MobileNavLink: React.FC<MobileNavLinkProps> = ({ heading, imgSrc, subheadi
     y.set(yPct);
   };
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    if (heading === "Contact Us") {
+      e.preventDefault();
+      setIsModalOpen(true);
+      setOpen(false);
+    }
+  };
+
   return (
     <motion.div
       variants={mobileLinkVars}
       className="flex flex-row w-full text-[calc(13vw)] md:text-[calc(8vw)] lg:text-[calc(5vw)] uppercase"
     >
-      <Link className='w-full ml-8 mr-8' to={href} onClick={() => setOpen(false)}>
+      <Link className='w-full ml-8 mr-8' to={href} onClick={(e) => handleClick(e)}>
         <motion.a
           href={href}
           ref={ref}

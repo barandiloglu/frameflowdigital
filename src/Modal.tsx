@@ -34,6 +34,8 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
     console.log(email);
   };
 
+  const [showEmailConfirmation, setShowEmailConfirmation] = useState(false);
+
   const handleSendEmail = () => {
     const templateParams = {
       from_name: name,
@@ -50,10 +52,13 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
       import.meta.env.VITE_EMAILJS_PUBLIC_KEY
     ).then((response) => {
         console.log('Email sent successfully:', response.status, response.text);
+        setShowEmailConfirmation(true);
+        setShowButtons(false);
     }, (error) => {
         console.error('There was an error sending the email:', error);
     });
   };
+
 
   const [inputCountName, setInputCountName] = useState(0);
   const [inputCountEmail, setInputCountEmail] = useState(0);
@@ -328,8 +333,43 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
                   <button className='flex px-12 py-2 bg-green-600 rounded-lg hover:bg-green-700' onClick={handleSendEmail}>Looks Good!</button>
               </div>
             )}
+            {showEmailConfirmation && (
+              <motion.div className='flex flex-col w-full mt-4'>
+                <TypingEffect text="EMAIL SENT! We will get back to you as soon as possible." />
+              </motion.div>
+            )}
         </motion.div>
     </motion.div>
+  );
+};
+
+interface TypingEffectProps {
+  text: string;
+}
+
+const TypingEffect: React.FC<TypingEffectProps> = ({ text }) => {
+  const [displayedText, setDisplayedText] = useState<string>('');
+  const [index, setIndex] = useState<number>(0);
+
+  useEffect(() => {
+    if (index < text.length) {
+      const timeoutId = setTimeout(() => {
+        setDisplayedText((prev) => prev + text[index]);
+        setIndex((prev) => prev + 1);
+      }, 30); 
+      return () => clearTimeout(timeoutId);
+    }
+  }, [index, text]);
+
+  return (
+    <motion.h1
+      className='text-green-500 text-[calc(2vw)]'
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      {displayedText}
+    </motion.h1>
   );
 };
 
