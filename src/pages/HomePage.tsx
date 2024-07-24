@@ -54,13 +54,13 @@ const HomePage = () => {
             let maxYUp = -100;
             const width = window.innerWidth;
 
-            if (width < 768) { // Small screens
+            if (width < 768) { 
                 maxYDown = 30;
                 maxYUp = -30;
-            } else if (width < 1024) { // Medium screens
+            } else if (width < 1024) { 
                 maxYDown = 45;
                 maxYUp = -45;
-            } else if (width < 1280) { // Large screens
+            } else if (width < 1280) { 
                 maxYDown = 50;
                 maxYUp = -50;
             }
@@ -147,23 +147,23 @@ const HomePage = () => {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
-            transition: { staggerChildren: 0.1, delay: 0.75 } // Slightly staggered for flicker effect
+            transition: { staggerChildren: 0.1, delay: 0.75 } 
         }
     };
 
     const bannerChild = {
         hidden: {
             opacity: 0,
-            y: 0, // Start from below
+            y: 0, 
             transition: {
                 ease: "easeIn"
             },
         },
         visible: {
-            opacity: [0, 1, 0.5, 1], // Keyframes for flicker effect
+            opacity: [0, 1, 0.5, 1], 
             y: 0,
             transition: {
-                duration: 1, // Adjust duration as needed
+                duration: 1, 
                 ease: "easeIn"
             },
         }
@@ -172,25 +172,25 @@ const HomePage = () => {
     const bannerSecondChild = {
         hidden: {
             opacity: 0,
-            y: 0, // Start from original position
+            y: 0,  
             transition: {
                 ease: "easeIn"
             },
         },
         visible: {
             opacity: opacity,
-            y: yDown, // Move down
+            y: yDown, 
             transition: {
                 duration: 1,
-                delay: 0, // Delay to start after the first animation ends
-                ease: [0.25, 0.1, 0.25, 1] // Cubic-bezier curve for fast-to-slow effect
+                delay: 0, 
+                ease: [0.25, 0.1, 0.25, 1] 
             },
             transitionEnd: {
-                color: '#ffffeb' // Change color after moving down
+                color: '#ffffeb'
             }
         },
         colorChange: {
-            opacity: [1, 0.5, 1], // Flicker effect
+            opacity: [1, 0.5, 1], 
             transition: {
                 duration: 0.5,
                 yoyo: Infinity
@@ -201,25 +201,25 @@ const HomePage = () => {
     const bannerThirdChild = {
         hidden: {
             opacity: 0,
-            y: 0, // Start from below
+            y: 0, 
             transition: {
                 ease: "easeIn"
             },
         },
         visible: {
             opacity: opacity,
-            y: yUp, // Move up
+            y: yUp, 
             transition: {
                 duration: 1,
-                delay: 0, // Delay to start after the first animation ends
-                ease: [0.25, 0.1, 0.25, 1] // Cubic-bezier curve for fast-to-slow effect
+                delay: 0, 
+                ease: [0.25, 0.1, 0.25, 1] 
             },
             transitionEnd: {
-                color: '#d18d29' // Change color after moving up
+                color: '#d18d29'
             }
         },
         colorChange: {
-            opacity: [1, 0.5, 1], // Flicker effect
+            opacity: [1, 0.5, 1],
             transition: {
                 duration: 0.5,
                 yoyo: Infinity
@@ -380,15 +380,6 @@ const Block = ({ className, ...rest }: BlockProps) => {
          {" "} Tell us your vision for your brand, and we will collaborate with you to develop a customized strategy that propels you forward in the digital landscape. 
         </span>
       </h1>
-      <a
-        href="#"
-        className="flex items-center gap-1 text-primary hover:underline text-[calc(2vw)] md:text-[calc(1.5vw)] lg:text-[calc(1vw)] xl:text-[calc(1vw)]"
-      >
-          <Link to={"/contact-us"}>
-            Contact us
-          </Link>
-          <FiArrowRight />
-      </a>
     </Block>
   );
   
@@ -399,7 +390,7 @@ const Block = ({ className, ...rest }: BlockProps) => {
           rotate: "2.5deg",
           scale: 1.1,
         }}
-        className="col-span-12 md:col-span-6"  // Adjusted for full width on smaller screens
+        className="col-span-12 md:col-span-6" 
         style={{
             background: 'linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045)'
           }}
@@ -443,7 +434,6 @@ const Block = ({ className, ...rest }: BlockProps) => {
           <SiTiktok />
         </a>
       </Block>
-      {/* Twitter Block Removed */}
     </>
   );
   

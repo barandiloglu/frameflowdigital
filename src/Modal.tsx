@@ -282,7 +282,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
                               <div className='flex flex-row'>
                                   <span className="mr-2 font-bold text-green-500">➜</span>
                                   <span className="mr-2 text-[#00FFFF] font-bold">~</span>
-                                  <span className="mr-2 font-bold text-gray-200">Enter your message:</span>
+                                  <span className="mr-2 font-bold text-gray-200">How can we assist you? </span>
                               </div>
                               <div className="relative flex items-center">
                                   <input
