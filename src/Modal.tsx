@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 import './css/ContactUs.css'; 
 import { IoIosClose } from "react-icons/io";
+import ThreeDotsWave from './ThreeDotsWave';
 
 interface ModalProps {
   isOpen: boolean;
@@ -37,13 +38,15 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   const [showEmailConfirmation, setShowEmailConfirmation] = useState(false);
 
   const handleSendEmail = () => {
+    setLoading(true);
+
     const templateParams = {
       from_name: name,
       to_name: 'Frame Flow',
       from_email: email,
       reply_to: email,
-      message,
-  };
+      message: `${selectedServices ? 'Selected services: ' + selectedServices + '\n' : ''}Message: ${message}`,
+    };
 
     emailjs.send(
       import.meta.env.VITE_EMAILJS_SERVICE_ID, 
@@ -54,10 +57,19 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
         console.log('Email sent successfully:', response.status, response.text);
         setShowEmailConfirmation(true);
         setShowButtons(false);
-    }, (error) => {
+      }).catch((error) => {
         console.error('There was an error sending the email:', error);
-    });
+      }).finally(() => {
+        setLoading(false);
+      });
   };
+
+  useEffect(() => {
+    if(loading === true) {
+      setShowButtons(false);
+    }
+  });
+
 
 
   const [inputCountName, setInputCountName] = useState(0);
@@ -134,6 +146,15 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
     setShowFinalConfirmation(false);
     setShowButtons(false);
 
+    setCheckedItems({
+      socialMediaManagement: false,
+      contentCreation: false,
+      seo: false,
+      webDesign: false,
+      photography: false,
+      photoEditing: false,
+    });
+    
     if (inputRefName.current) {
       inputRefName.current.focus();
     }
@@ -155,6 +176,30 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
       inputRefMessage.current.focus();
     }
   }, [showEmailInput, showMessageInput]);
+
+  const [loading, setLoading] = useState(false);
+
+  const [checkedItems, setCheckedItems] = useState({
+    socialMediaManagement: false,
+    contentCreation: false,
+    seo: false,
+    webDesign: false,
+    photography: false,
+    photoEditing: false,
+  });
+
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, checked } = event.target;
+    setCheckedItems({
+      ...checkedItems,
+      [name]: checked,
+    });
+  };
+
+  const selectedServices = Object.keys(checkedItems)
+    .filter(key => checkedItems[key as keyof typeof checkedItems])
+    .map(key => key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase()))
+    .join(', ');
 
   return (
     <motion.div
@@ -278,13 +323,80 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
                           <label htmlFor="email" className="block mt-2 space-x-2">
                               <span className='text-green-500'>Got it! We will contact with you on "{email}".</span>
                           </label>
-                          <div className="flex items-center mt-2">
+                          <div className="flex flex-col items-start justify-start mt-2">
                               <div className='flex flex-row'>
                                   <span className="mr-2 font-bold text-green-500">➜</span>
                                   <span className="mr-2 text-[#00FFFF] font-bold">~</span>
                                   <span className="mr-2 font-bold text-gray-200">How can we assist you? </span>
                               </div>
-                              <div className="relative flex items-center">
+                              <div className="flex flex-col justify-center mt-2 space-y-2 text-green-500">
+                                <label className="flex items-center space-x-2">
+                                  <input
+                                    type="checkbox"
+                                    className="peer relative appearance-none w-5 h-5 border rounded-md border-green-500 cursor-pointer transition-all before:content[''] before:block before:bg-blue-gray-500 before:w-12 before:h-12 before:rounded-full before:absolute before:top-2/4 before:left-2/4 before:-translate-y-2/4 before:-translate-x-2/4 before:opacity-0 hover:before:opacity-10 before:transition-opacity checked:bg-green-500 checked:border-green-500 checked:before:bg-green-500"
+                                    name="socialMediaManagement"
+                                    checked={checkedItems.socialMediaManagement}
+                                    onChange={handleCheckboxChange}
+                                  />
+                                  <span className='text-blue-400'>Social Media Management</span>
+                                </label>
+                                <label className="flex items-center space-x-2">
+                                  <input
+                                    type="checkbox"
+                                    className="peer relative appearance-none w-5 h-5 border rounded-md border-green-500 cursor-pointer transition-all before:content[''] before:block before:bg-blue-gray-500 before:w-12 before:h-12 before:rounded-full before:absolute before:top-2/4 before:left-2/4 before:-translate-y-2/4 before:-translate-x-2/4 before:opacity-0 hover:before:opacity-10 before:transition-opacity checked:bg-green-500 checked:border-green-500 checked:before:bg-green-500"
+                                    name="contentCreation"
+                                    checked={checkedItems.contentCreation}
+                                    onChange={handleCheckboxChange}
+                                  />
+                                  <span className='text-blue-400'>Content Creation</span>
+                                </label>
+                                <label className="flex items-center space-x-2">
+                                  <input
+                                    type="checkbox"
+                                    className="peer relative appearance-none w-5 h-5 border rounded-md border-green-500 cursor-pointer transition-all before:content[''] before:block before:bg-blue-gray-500 before:w-12 before:h-12 before:rounded-full before:absolute before:top-2/4 before:left-2/4 before:-translate-y-2/4 before:-translate-x-2/4 before:opacity-0 hover:before:opacity-10 before:transition-opacity checked:bg-green-500 checked:border-green-500 checked:before:bg-green-500"
+                                    name="seo"
+                                    checked={checkedItems.seo}
+                                    onChange={handleCheckboxChange}
+                                  />
+                                  <span className='text-blue-400'>Search Engine Optimization</span>
+                                </label>
+                                <label className="flex items-center space-x-2">
+                                  <input
+                                    type="checkbox"
+                                    className="peer relative appearance-none w-5 h-5 border rounded-md border-green-500 cursor-pointer transition-all before:content[''] before:block before:bg-blue-gray-500 before:w-12 before:h-12 before:rounded-full before:absolute before:top-2/4 before:left-2/4 before:-translate-y-2/4 before:-translate-x-2/4 before:opacity-0 hover:before:opacity-10 before:transition-opacity checked:bg-green-500 checked:border-green-500 checked:before:bg-green-500"
+                                    name="webDesign"
+                                    checked={checkedItems.webDesign}
+                                    onChange={handleCheckboxChange}
+                                  />
+                                  <span className='text-blue-400'>Web Design</span>
+                                </label>
+                                <label className="flex items-center space-x-2">
+                                  <input
+                                    type="checkbox"
+                                    className="peer relative appearance-none w-5 h-5 border rounded-md border-green-500 cursor-pointer transition-all before:content[''] before:block before:bg-blue-gray-500 before:w-12 before:h-12 before:rounded-full before:absolute before:top-2/4 before:left-2/4 before:-translate-y-2/4 before:-translate-x-2/4 before:opacity-0 hover:before:opacity-10 before:transition-opacity checked:bg-green-500 checked:border-green-500 checked:before:bg-green-500"
+                                    name="photography"
+                                    checked={checkedItems.photography}
+                                    onChange={handleCheckboxChange}
+                                  />
+                                  <span className='text-blue-400'>Photography/Videography</span>
+                                </label>
+                                <label className="flex items-center space-x-2">
+                                  <input
+                                    type="checkbox"
+                                    className="peer relative appearance-none w-5 h-5 border rounded-md border-green-500 cursor-pointer transition-all before:content[''] before:block before:bg-blue-gray-500 before:w-12 before:h-12 before:rounded-full before:absolute before:top-2/4 before:left-2/4 before:-translate-y-2/4 before:-translate-x-2/4 before:opacity-0 hover:before:opacity-10 before:transition-opacity checked:bg-green-500 checked:border-green-500 checked:before:bg-green-500"
+                                    name="photoEditing"
+                                    checked={checkedItems.photoEditing}
+                                    onChange={handleCheckboxChange}
+                                  />
+                                  <span className='text-blue-400'>Photo/Video Editing</span>
+                                </label>
+                              </div>
+                              <div className='flex flex-row items-center'>
+                                <span className="mr-2 font-bold text-green-500">➜</span>
+                                <span className="mr-2 text-[#00FFFF] font-bold">~</span>
+                                <span className="mr-2 font-bold text-gray-200">Your message to us: </span>
+                                
+                                <div className="relative flex items-center">
                                   <input
                                       id='message'
                                       ref={inputRefMessage}
@@ -299,8 +411,11 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
                                   <div
                                       className="caret absolute left-1 h-5 w-[8px] bg-white z-10"
                                       style={{ transform: `translateX(${inputCountMessage * 10}px)` }}
-                                  ></div>
+                                  > 
+                                  </div>
+                                </div>
                               </div>
+
                           </div>
                       </>
                   )}
@@ -322,6 +437,10 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
                     <label htmlFor="email" className="block mt-2 space-x-2">
                         <span className='text-green-500'>Got it! We will contact with you on "{email}".</span>
                     </label>
+                    <label htmlFor="categories" className="block mt-2 space-x-2">
+                        <span className='text-green-500'>Selected services: </span>
+                        <span className='text-blue-400'>{selectedServices}</span>
+                    </label>
                     <label htmlFor="email" className="block mt-2 space-x-2">
                         <span className='text-green-500'>Your message: {message}.</span>
                     </label>
@@ -331,6 +450,11 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
               <div className='flex flex-row justify-between w-1/2 mt-4'>
                   <button className='flex px-12 py-2 bg-red-500 rounded-lg hover:bg-red-600' onClick={resetForm}>Start Over</button>
                   <button className='flex px-12 py-2 bg-green-600 rounded-lg hover:bg-green-700' onClick={handleSendEmail}>Looks Good!</button>
+              </div>
+            )}
+            {loading && (
+              <div className='flex items-center justify-center'>
+                <ThreeDotsWave />
               </div>
             )}
             {showEmailConfirmation && (

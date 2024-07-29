@@ -293,6 +293,8 @@ const MobileNavLink: React.FC<MobileNavLinkProps> = ({ heading, imgSrc, subheadi
       e.preventDefault();
       setIsModalOpen(true);
       setOpen(false);
+    } else {
+      setOpen(false);
     }
   };
 
