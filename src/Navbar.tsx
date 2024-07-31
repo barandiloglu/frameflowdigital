@@ -323,7 +323,7 @@ const MobileNavLink: React.FC<MobileNavLinkProps> = ({ heading, imgSrc, subheadi
                 staggerChildren: 0.075,
                 delayChildren: 0.25,
               }}
-              className="relative z-10 block text-4xl font-bold transition-colors duration-500 text-neutral-400 group-hover:text-neutral-50 md:text-6xl"
+              className="relative z-10 block text-3xl font-bold transition-colors duration-500 text-neutral-400 group-hover:text-neutral-50 md:text-6xl"
             >
               {[...heading].map((l, i) => (
                 <motion.span

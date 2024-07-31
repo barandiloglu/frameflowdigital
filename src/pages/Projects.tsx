@@ -11,7 +11,7 @@ const projects = [
     { heading: "PHOTO/VIDEO EDITING", subheading: "Get in touch", imgSrc: "./src/assets/services/7.png" },
 ];
 
-const ONE_SECOND = 1000;
+const ONE_SECOND = 500;
 const AUTO_DELAY = ONE_SECOND * 10;
 
 const Projects = () => {
@@ -54,17 +54,6 @@ const Projects = () => {
                     <Images imgIndex={imgIndex} expanded={expanded} />
                 </motion.div>
             </div>
-            <div className="w-full overflow-hidden bg-transparent">
-                <motion.div
-                    animate={{
-                        translateX: `-${imgIndex * 75}%`,
-                    }}
-                    transition={{ ease: 'easeInOut', duration: 0.65 }}
-                    className="flex"
-                >
-                    <Images imgIndex={imgIndex} expanded={expanded} />
-                </motion.div>
-            </div>
         </div>
     );
 };
@@ -83,7 +72,7 @@ const Images = ({ imgIndex, expanded }: { imgIndex: number; expanded: boolean })
                         scale: imgIndex === idx ? 1 : 1,
                     }}
                     transition={{ ease: 'easeInOut', duration: 0.65 }}
-                    className="flex flex-row items-center justify-start w-[75%] h-full bg-transparent aspect-video shrink-0"
+                    className="flex flex-row justify-start w-[75%] h-full bg-transparent aspect-video shrink-0"
                 >
                     <div className="relative w-full overflow-hidden">
                         <motion.div className="flex flex-row justify-start">
