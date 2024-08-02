@@ -41,9 +41,11 @@ const Projects = () => {
         }, 800); 
     };
 
+    const text = "IN PROGRESS";
+
     return (
         <div className="flex flex-col w-full min-h-screen bg-secondary">
-            <div className="w-full overflow-hidden bg-transparent">
+{/*            <div className="w-full overflow-hidden bg-transparent">
                 <motion.div
                     animate={{
                         translateX: `-${imgIndex * 75}%`,
@@ -53,6 +55,55 @@ const Projects = () => {
                 >
                     <Images imgIndex={imgIndex} expanded={expanded} />
                 </motion.div>
+            </div>
+*/}
+            <div className="flex flex-col items-center justify-center w-full min-h-screen space-y-8">
+                <div className="flex text-light font-alata text-[calc(5vw)] md:text-[calc(3vw)] lg:text-[calc(2vw)] xl:text-[calc(3vw)]">
+                    {text.split(" ").map((letter, index) => (
+                        <motion.span
+                            key={index}
+                            initial={{ color: "#ffffeb" }}
+                            animate={{ color: "#d18d29" }}
+                            transition={{
+                                duration: 1,
+                                ease: "easeInOut",
+                                delay: index * 0.1,
+                                repeat: Infinity,
+                                repeatType: "reverse"
+                            }}
+                        >
+                            {letter}&nbsp;
+                        </motion.span>
+                    ))}
+                    {[".", ".", "."].map((dot, index) => (
+                        <motion.span
+                            key={index + text.length} 
+                            initial={{ opacity: 0, color: "#ffffeb" }}
+                            animate={{ opacity: 1, color: "#d18d29" }}
+                            transition={{
+                                duration: 0.5,
+                                ease: "easeInOut",
+                                delay: 1.5 + index * 0.3, 
+                                repeat: Infinity,
+                                repeatType: "reverse"
+                            }}
+                        >
+                            {dot}
+                        </motion.span>
+                    ))}
+                </div>
+
+                <motion.img
+                    src="src/assets/inProgress.png"
+                    className="xl:w-[calc(20vw)] xl:h-[calc(20vw)] lg:w-[calc(30vw) lg:h-[calc(30vw)] md:w-[calc(35vw)] md:h-[calc(35vw)] w-[calc(40vw) h-[calc(40vw)]"
+                    initial={{ scale: 0, borderRadius: "0rem" }}
+                    animate={{ scale: [0, 1.2, 1], borderRadius: "2rem" }}
+                    transition={{
+                        scale: { duration: 1 },
+                        borderRadius: { delay: 1, duration: 1 },
+                        ease: "easeInOut"
+                    }}
+                />
             </div>
         </div>
     );

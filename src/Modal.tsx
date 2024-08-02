@@ -463,7 +463,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
           </>
         )}
         {showButtons && (
-          <div className='flex flex-row justify-between w-1/2 mt-4'>
+          <div className='flex flex-row justify-between w-full mt-4 md:w-1/2 lg:w-1/2 xl:w-1/2'>
             <button className='flex px-12 py-2 bg-red-500 rounded-lg hover:bg-red-600' onClick={resetForm}>Start Over</button>
             <button className='flex px-12 py-2 bg-green-600 rounded-lg hover:bg-green-700' onClick={handleSendEmail}>Looks Good!</button>
           </div>

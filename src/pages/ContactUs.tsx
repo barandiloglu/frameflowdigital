@@ -261,7 +261,7 @@ const ContactUs: React.FC = () => {
                 </>
             )}
             {showButtons && (
-              <div className='flex flex-row justify-between w-1/2 mt-4'>
+              <div className='flex flex-row w-1/2 mt-4'>
                   <button className='flex px-12 py-2 bg-red-500 rounded-lg hover:bg-red-600' onClick={resetForm}>Start Over</button>
                   <button className='flex px-12 py-2 bg-green-600 rounded-lg hover:bg-green-700'>Looks Good!</button>
               </div>

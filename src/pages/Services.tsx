@@ -2,11 +2,13 @@ import transition from "../transition";
 import { motion, useAnimation, useScroll, useTransform } from 'framer-motion';
 import { useEffect, useState, useRef } from 'react';
 import { GoArrowUpRight } from "react-icons/go";
+import { GoArrowUp } from "react-icons/go";
 
 const Services = () => {
     const controls = useAnimation();
 
     const { scrollYProgress } = useScroll();
+    const [isButtonVisible, setIsButtonVisible] = useState(false);
 
     const socialMediaRef = useRef<HTMLDivElement>(null);
     const contentCreationRef = useRef<HTMLDivElement>(null);
@@ -31,6 +33,27 @@ const Services = () => {
             transition: { duration: 2, repeat: Infinity, repeatType: "loop" }
         });
     }, [controls]);
+
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+          ([entry]) => {
+              if (entry.isIntersecting) {
+                  setIsButtonVisible(true);
+              }
+          },
+          { threshold: 0.1 }
+      );
+
+      if (socialMediaRef.current) {
+          observer.observe(socialMediaRef.current);
+      }
+
+      return () => {
+          if (socialMediaRef.current) {
+              observer.unobserve(socialMediaRef.current);
+          }
+      };
+  }, []);
 
     return (
         <div className='flex flex-col items-center min-h-screen mx-auto bg-secondary'>
@@ -214,6 +237,17 @@ const Services = () => {
                 className="z-10 progress-bar"
                 style={{ scaleX: scrollYProgress }}
             />       
+
+            {isButtonVisible && (
+                <motion.div
+                    className="fixed z-10 flex items-center justify-center w-16 h-16 bg-white rounded-full cursor-pointer bottom-4 right-4"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                >
+                    <GoArrowUp className="transform text-secondary"/>
+                </motion.div>
+            )}
         </div>
     );
 };
