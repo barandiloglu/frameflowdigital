@@ -19,7 +19,7 @@ function App() {
 
   ReactGA.initialize([
     {
-      trackingId: "G-6K899LDKCM",
+      trackingId: import.meta.env.VITE_GOOGLE_ANALYTICS_ID, // Use env variable here
     },
   ]);
 
