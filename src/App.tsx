@@ -1,20 +1,29 @@
 import Navbar from "./Navbar";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
 import HomePage from "./pages/HomePage";
-import Projects from './pages/Projects';
-import Services from './pages/Services';
-import WhyUs from './pages/WhyUs';
-import ContactUs from './pages/ContactUs';
+import Projects from "./pages/Projects";
+import Services from "./pages/Services";
+import WhyUs from "./pages/WhyUs";
+import ContactUs from "./pages/ContactUs";
 
-import { InitialLoadProvider } from './InitialLoadContext';
+import { InitialLoadProvider } from "./InitialLoadContext";
+import ReactGA from "react-ga4";
 
-import './App.css'
+import "./App.css";
 
 function App() {
   const location = useLocation();
+
+  ReactGA.initialize([
+    {
+      trackingId: "G-6K899LDKCM",
+    },
+  ]);
+
+  ReactGA.send({ hitType: "pageview", page: "/" });
 
   return (
     <InitialLoadProvider>
