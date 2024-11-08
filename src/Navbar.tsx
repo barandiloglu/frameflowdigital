@@ -1,20 +1,27 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, useAnimation, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from "react";
+import {
+  motion,
+  useAnimation,
+  useMotionValue,
+  useSpring,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
+import { Link } from "react-router-dom";
 
-import logo from './assets/logo.png';
+import logo from "./assets/logo.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
 import { FiArrowRight } from "react-icons/fi";
-import Modal from './Modal'; 
-import ContactUs from './pages/ContactUs'; 
+import Modal from "./Modal";
+import ContactUs from "./pages/ContactUs";
 
 const Navbar = () => {
   const textControls = useAnimation();
   const logoControls = useAnimation();
   const [menuAnimationComplete, setMenuAnimationComplete] = useState(false);
   const [open, setOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false); 
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const sequence = async () => {
@@ -22,15 +29,14 @@ const Navbar = () => {
       await textControls.start({
         scale: [1, 1.2, 1],
         opacity: 1,
-        transition: { duration: 0.6, ease: 'easeInOut' }
+        transition: { duration: 0.6, ease: "easeInOut" },
       });
       await textControls.start({
-        x: 45, 
-        transition: { duration: 0.6, ease: 'easeInOut' }
+        transition: { duration: 0.6, ease: "easeInOut" },
       });
       logoControls.start({
         opacity: [0, 0.5, 1],
-        transition: { duration: 0.6, ease: 'easeInOut' }
+        transition: { duration: 0.6, ease: "easeInOut" },
       });
     };
     sequence();
@@ -65,7 +71,7 @@ const Navbar = () => {
       setMenuAnimationComplete(false);
     }
 
-    await new Promise<void>(resolve => {
+    await new Promise<void>((resolve) => {
       setMenuAnimationComplete(false);
       resolve();
     });
@@ -111,37 +117,64 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { heading: "Projects", subheading: "See our projects", imgSrc: "./src/assets/posts/1.png", href: "/projects" },
-    { heading: "Services", subheading: "Our services", imgSrc: "./src/assets/posts/2.png", href: "/services" },
-    { heading: "Why Us?", subheading: "Why choose us?", imgSrc: "./src/assets/posts/3.png", href: "/why-us" },
-    { heading: "Contact Us", subheading: "Get in touch", imgSrc: "./src/assets/posts/4.png", href: "/contact-us" },
+    {
+      heading: "Projects",
+      subheading: "See our projects",
+      imgSrc: "./src/assets/posts/1.png",
+      href: "/projects",
+    },
+    {
+      heading: "Services",
+      subheading: "Our services",
+      imgSrc: "./src/assets/posts/2.png",
+      href: "/services",
+    },
+    {
+      heading: "Why Us?",
+      subheading: "Why choose us?",
+      imgSrc: "./src/assets/posts/3.png",
+      href: "/why-us",
+    },
+    {
+      heading: "Contact Us",
+      subheading: "Get in touch",
+      imgSrc: "./src/assets/posts/4.png",
+      href: "/contact-us",
+    },
   ];
 
   return (
     <header>
       <nav className="w-full p-5 bg-secondary text-light font-alata">
         <div className="flex items-center justify-between mx-auto h-[5vh] w-full">
-          <div className="relative flex flex-row items-center">
-            <Link to='/' className="flex flex-row items-center">
+          <div className="flex flex-row items-center">
+            <Link to="/" className="flex flex-row items-center">
+              <motion.div className="flex flex-col">
+                <motion.div
+                  initial={{ scale: 1, opacity: 1 }}
+                  className="px-4 w-[170px] flex text-2xl font-quicksand font-bold"
+                >
+                  frame
+                </motion.div>
+                <motion.div
+                  initial={{ scale: 1, opacity: 1 }}
+                  className="px-4 w-[170px] flex text-2xl font-quicksand font-bold"
+                >
+                  flo
+                </motion.div>
+              </motion.div>
               <motion.img
                 src={logo}
                 alt="Logo"
-                initial={{ opacity: 0 }}
-                animate={logoControls}
+                initial={{ opacity: 1, x: -130, y: 15 }}
+                animate={textControls}
                 className="flex w-8 h-8 ml-2"
               />
-              <motion.div
-                initial={{ scale: 1, opacity: 0 }}
-                animate={textControls}
-                className="absolute px-4 w-[170px] flex text-2xl font-bold"
-              >
-                Frame Flow
-              </motion.div>
             </Link>
           </div>
-          <div className='flex items-center'>
+          <div className="flex items-center">
             <motion.div
-              className='items-center hidden mr-4 space-x-8 lg:flex right-4'
+              className="items-center hidden mr-4 space-x-8 lg:flex right-4"
               variants={container}
               initial="hidden"
               animate="visible"
@@ -153,9 +186,7 @@ const Navbar = () => {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <Link to={link.href}>
-                    {link.heading}
-                  </Link>
+                  <Link to={link.href}>{link.heading}</Link>
                 </motion.button>
               ))}
               <motion.button
@@ -163,7 +194,7 @@ const Navbar = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 className="px-4 py-2 bg-primary text-light"
-                onClick={() => setIsModalOpen(true)} 
+                onClick={() => setIsModalOpen(true)}
               >
                 CONTACT US
               </motion.button>
@@ -205,7 +236,12 @@ const Navbar = () => {
                 onAnimationComplete={() => setMenuAnimationComplete(true)}
               >
                 {navLinks.map((link, index) => (
-                  <div key={index} className={`flex flex-row items-center justify-start w-full ${!menuAnimationComplete ? 'overflow-hidden' : ' '}`}>
+                  <div
+                    key={index}
+                    className={`flex flex-row items-center justify-start w-full ${
+                      !menuAnimationComplete ? "overflow-hidden" : " "
+                    }`}
+                  >
                     <MobileNavLink
                       heading={link.heading}
                       subheading={link.subheading}
@@ -258,7 +294,14 @@ const mobileLinkVars = {
   },
 };
 
-const MobileNavLink: React.FC<MobileNavLinkProps> = ({ heading, imgSrc, subheading, href, setOpen, setIsModalOpen }) => {
+const MobileNavLink: React.FC<MobileNavLinkProps> = ({
+  heading,
+  imgSrc,
+  subheading,
+  href,
+  setOpen,
+  setIsModalOpen,
+}) => {
   const ref = useRef<HTMLAnchorElement | null>(null);
 
   const x = useMotionValue(0);
@@ -303,7 +346,11 @@ const MobileNavLink: React.FC<MobileNavLinkProps> = ({ heading, imgSrc, subheadi
       variants={mobileLinkVars}
       className="flex flex-row w-full text-[calc(13vw)] md:text-[calc(8vw)] lg:text-[calc(5vw)] uppercase"
     >
-      <Link className='w-full ml-8 mr-8' to={href} onClick={(e) => handleClick(e)}>
+      <Link
+        className="w-full ml-8 mr-8"
+        to={href}
+        onClick={(e) => handleClick(e)}
+      >
         <motion.a
           href={href}
           ref={ref}
@@ -335,7 +382,7 @@ const MobileNavLink: React.FC<MobileNavLinkProps> = ({ heading, imgSrc, subheadi
                   transition={{ type: "spring" }}
                   className="inline-block"
                 >
-                  {l === ' ' ? '\u00A0' : l}
+                  {l === " " ? "\u00A0" : l}
                 </motion.span>
               ))}
             </motion.span>
@@ -343,7 +390,7 @@ const MobileNavLink: React.FC<MobileNavLinkProps> = ({ heading, imgSrc, subheadi
               {subheading}
             </span>
           </div>
-    
+
           <motion.img
             style={{
               top,
@@ -360,7 +407,7 @@ const MobileNavLink: React.FC<MobileNavLinkProps> = ({ heading, imgSrc, subheadi
             className="absolute z-0 object-cover w-32 h-24 rounded-lg md:h-48 md:w-64"
             alt={`Image representing a link for ${heading}`}
           />
-    
+
           <motion.div
             variants={{
               initial: {
@@ -377,10 +424,8 @@ const MobileNavLink: React.FC<MobileNavLinkProps> = ({ heading, imgSrc, subheadi
           >
             <FiArrowRight className="text-5xl text-neutral-50" />
           </motion.div>
-
         </motion.a>
       </Link>
-
     </motion.div>
   );
 };
