@@ -1,50 +1,71 @@
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import transition from "../transition";
+// src/App.tsx
 
-import acornLogo from "../assets/projects/acorn-logo.png";
-const Projects = () => {
+import React from "react";
+import { useState, useEffect, useRef } from "react";
+
+import transition from "../transition";
+import { motion } from "framer-motion";
+
+const Projects: React.FC = () => {
+  const [activeYear, setActiveYear] = useState(2022);
+  const containerRef = useRef(null);
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  const years = [2019, 2021, 2022, 2023];
+
+  const handleScroll = () => {
+    const container = containerRef.current;
+    if (container) {
+      const { scrollTop, scrollHeight, clientHeight } = container;
+
+      // Update scroll position for parallax effect
+      setScrollPosition(scrollTop);
+
+      const scrollPercentage = scrollTop / (scrollHeight - clientHeight);
+
+      // Dynamically determine active year based on scroll
+      const yearIndex = Math.min(
+        Math.floor(scrollPercentage * years.length),
+        years.length - 1,
+      );
+      setActiveYear(years[yearIndex]);
+    }
+  };
+
   return (
-    <div className="grid grid-cols-3 gap-4 w-full min-h-screen bg-secondary p-4">
-      <button className="flex flex-col items-center justify-center aspect-square rounded-lg border border-zinc-700 bg-zinc-800 p-6">
-        <img src={acornLogo}></img>
-        <h1 className="flex text-light font-lemonmilk text-4xl">
-          Acorn Accounting
-        </h1>
-      </button>
-      <button className="flex flex-col items-center justify-center aspect-square rounded-lg border border-zinc-700 bg-zinc-800 p-6">
-        <img src={acornLogo}></img>
-        <h1 className="flex text-light font-lemonmilk text-4xl">
-          Acorn Events
-        </h1>
-      </button>
-      <button className="flex flex-col items-center justify-center aspect-square rounded-lg border border-zinc-700 bg-zinc-800 p-6">
-        <img src={acornLogo}></img>
-        <h1 className="flex text-light font-lemonmilk text-4xl">
-          Anatolian Breeze
-        </h1>
-      </button>
-      <button className="flex flex-col items-center justify-center aspect-square rounded-lg border border-zinc-700 bg-zinc-800 p-6">
-        <img src={acornLogo}></img>
-        <h1 className="flex text-light font-lemonmilk text-4xl">
-          Big Bears Baked Potato
-        </h1>
-      </button>
-      <button className="flex flex-col items-center justify-center aspect-square rounded-lg border border-zinc-700 bg-zinc-800 p-6">
-        <img src={acornLogo}></img>
-        <h1 className="flex text-light font-lemonmilk text-4xl">Edupathways</h1>
-      </button>
-      <button className="flex flex-col items-center justify-center aspect-square rounded-lg border border-zinc-700 bg-zinc-800 p-6">
-        <img src={acornLogo}></img>
-        <h1 className="flex text-light font-lemonmilk text-4xl">
-          Northern Pathways
-        </h1>
-      </button>
-      <button className="flex flex-col items-center justify-center aspect-square rounded-lg border border-zinc-700 bg-zinc-800 p-6">
-        <img src={acornLogo}></img>
-        <h1 className="flex text-light font-lemonmilk text-4xl">Teachways</h1>
-      </button>
-      <div className="aspect-square rounded-lg  border-zinc-700 bg-transparent p-6"></div>
+    <div className="flex min-h-screen w-full flex-col items-center bg-secondary p-8">
+      <div className="flex w-full">
+        <div
+          ref={containerRef}
+          onScroll={handleScroll}
+          className="my-8 flex min-h-screen w-1/4 items-center justify-center border-r border-r-zinc-800"
+        >
+          <div className="relative flex flex-col space-y-16">
+            {years.map((year, index) => {
+              // Calculate parallax effect for each year
+              const parallaxOffset = (scrollPosition - index * 100) * 0.1;
+
+              return (
+                <div
+                  key={year}
+                  className={`text-2xl font-bold ${
+                    activeYear === year ? "text-white" : "text-zinc-500"
+                  }`}
+                  style={{
+                    transform: `translateY(${parallaxOffset}px)`, // Parallax effect
+                    transition: "transform 0.1s ease-out", // Smooth motion
+                  }}
+                >
+                  {year}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <div className="flex w-3/4">
+          <p className="text-xl text-white">Selected Year: {activeYear}</p>
+        </div>
+      </div>
     </div>
   );
 };
