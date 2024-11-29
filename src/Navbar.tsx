@@ -145,20 +145,20 @@ const Navbar = () => {
 
   return (
     <header>
-      <nav className="w-full p-5 bg-secondary text-light font-alata">
-        <div className="flex items-center justify-between mx-auto h-[5vh] w-full">
+      <nav className="w-full bg-secondary p-5 font-alata text-light">
+        <div className="mx-auto flex h-[5vh] w-full items-center justify-between">
           <div className="flex flex-row items-center">
             <Link to="/" className="flex flex-row items-center">
               <motion.div className="flex flex-col">
                 <motion.div
                   initial={{ scale: 1, opacity: 1 }}
-                  className="px-4 w-[170px] flex text-2xl font-quicksand font-bold"
+                  className="flex w-[170px] px-4 font-quicksand text-2xl font-bold"
                 >
                   frame
                 </motion.div>
                 <motion.div
                   initial={{ scale: 1, opacity: 1 }}
-                  className="px-4 w-[170px] flex text-2xl font-quicksand font-bold"
+                  className="flex w-[170px] px-4 font-quicksand text-2xl font-bold"
                 >
                   flo
                 </motion.div>
@@ -168,13 +168,13 @@ const Navbar = () => {
                 alt="Logo"
                 initial={{ opacity: 1, x: -130, y: 15 }}
                 animate={textControls}
-                className="flex w-8 h-8 ml-2"
+                className="ml-2 flex h-8 w-8"
               />
             </Link>
           </div>
           <div className="flex items-center">
             <motion.div
-              className="items-center hidden mr-4 space-x-8 lg:flex right-4"
+              className="right-4 mr-4 hidden items-center space-x-8 lg:flex"
               variants={container}
               initial="hidden"
               animate="visible"
@@ -193,14 +193,14 @@ const Navbar = () => {
                 variants={item}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className="px-4 py-2 bg-primary text-light"
+                className="bg-primary px-4 py-2 text-light"
                 onClick={() => setIsModalOpen(true)}
               >
                 CONTACT US
               </motion.button>
             </motion.div>
             <div
-              className="flex text-xl cursor-pointer right-5 text-md text-light"
+              className="text-md right-5 flex cursor-pointer text-xl text-light"
               onClick={toggleMenu}
             >
               <GiHamburgerMenu />
@@ -216,12 +216,12 @@ const Navbar = () => {
             initial="initial"
             animate="animate"
             exit="exit"
-            className="fixed top-0 left-0 z-20 w-full h-screen px-5 pt-8 mx-auto origin-top bg-zinc-800 text-zinc-300 font-alata"
+            className="fixed left-0 top-0 z-20 mx-auto h-screen w-full origin-top bg-zinc-800 px-5 pt-8 font-alata text-zinc-300"
           >
-            <div className="flex flex-col h-full">
+            <div className="flex h-full flex-col">
               <div className="flex justify-end">
                 <p
-                  className="text-xl font-bold cursor-pointer text-md text-zinc-300"
+                  className="text-md cursor-pointer text-xl font-bold text-zinc-300"
                   onClick={toggleMenu}
                 >
                   <AiOutlineClose />
@@ -232,13 +232,13 @@ const Navbar = () => {
                 initial="initial"
                 animate="open"
                 exit="initial"
-                className="flex flex-col items-center justify-center w-full h-full space-y-8"
+                className="flex h-full w-full flex-col items-center justify-center space-y-8"
                 onAnimationComplete={() => setMenuAnimationComplete(true)}
               >
                 {navLinks.map((link, index) => (
                   <div
                     key={index}
-                    className={`flex flex-row items-center justify-start w-full ${
+                    className={`flex w-full flex-row items-center justify-start ${
                       !menuAnimationComplete ? "overflow-hidden" : " "
                     }`}
                   >
@@ -314,7 +314,7 @@ const MobileNavLink: React.FC<MobileNavLinkProps> = ({
   const left = useTransform(mouseXSpring, [0.5, -0.5], ["60%", "70%"]);
 
   const handleMouseMove = (
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
   ) => {
     const rect = ref.current!.getBoundingClientRect();
 
@@ -344,10 +344,10 @@ const MobileNavLink: React.FC<MobileNavLinkProps> = ({
   return (
     <motion.div
       variants={mobileLinkVars}
-      className="flex flex-row w-full text-[calc(13vw)] md:text-[calc(8vw)] lg:text-[calc(5vw)] uppercase"
+      className="flex w-full flex-row text-[calc(13vw)] uppercase md:text-[calc(8vw)] lg:text-[calc(5vw)]"
     >
       <Link
-        className="w-full ml-8 mr-8"
+        className="ml-8 mr-8 w-full"
         to={href}
         onClick={(e) => handleClick(e)}
       >
@@ -357,7 +357,7 @@ const MobileNavLink: React.FC<MobileNavLinkProps> = ({
           onMouseMove={handleMouseMove}
           initial="initial"
           whileHover="whileHover"
-          className="relative flex items-center justify-between w-full py-4 transition-colors duration-500 border-b-2 group border-neutral-400 hover:border-neutral-50 md:py-8"
+          className="group relative flex w-full items-center justify-between border-b-2 border-neutral-400 py-4 transition-colors duration-500 hover:border-neutral-50 md:py-8"
         >
           <div>
             <motion.span
@@ -370,7 +370,7 @@ const MobileNavLink: React.FC<MobileNavLinkProps> = ({
                 staggerChildren: 0.075,
                 delayChildren: 0.25,
               }}
-              className="relative z-10 block text-3xl font-bold transition-colors duration-500 text-neutral-400 group-hover:text-neutral-50 md:text-6xl"
+              className="relative z-10 block text-3xl font-bold text-neutral-400 transition-colors duration-500 group-hover:text-neutral-50 md:text-6xl"
             >
               {[...heading].map((l, i) => (
                 <motion.span
@@ -386,7 +386,7 @@ const MobileNavLink: React.FC<MobileNavLinkProps> = ({
                 </motion.span>
               ))}
             </motion.span>
-            <span className="relative z-10 block mt-2 text-base transition-colors duration-500 text-neutral-400 group-hover:text-neutral-50">
+            <span className="relative z-10 mt-2 block text-base text-neutral-400 transition-colors duration-500 group-hover:text-neutral-50">
               {subheading}
             </span>
           </div>
@@ -404,7 +404,7 @@ const MobileNavLink: React.FC<MobileNavLinkProps> = ({
             }}
             transition={{ type: "spring" }}
             src={imgSrc}
-            className="absolute z-0 object-cover w-32 h-24 rounded-lg md:h-48 md:w-64"
+            className="absolute z-0 h-24 w-32 rounded-lg object-cover md:h-48 md:w-64"
             alt={`Image representing a link for ${heading}`}
           />
 
