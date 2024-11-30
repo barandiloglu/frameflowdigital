@@ -91,10 +91,10 @@ const Projects: React.FC = () => {
   };
 
   return (
-    <div className="flex min-h-screen w-full flex-col items-center justify-center bg-secondary">
-      <div className="flex w-full flex-row">
+    <div className="flex flex-col items-center justify-center w-full min-h-screen bg-secondary">
+      <div className="flex flex-row w-full">
         {/* Left Div with Buttons */}
-        <div className="relative flex w-1/2 flex-col space-y-4 divide-y divide-gray-300 font-lemonmilk text-light">
+        <div className="relative flex flex-col w-1/2 space-y-4 divide-y divide-gray-300 font-lemonmilk text-light">
           <AnimatePresence mode="wait">
             {hoveredIndex !== null && (
               <motion.img
@@ -105,27 +105,27 @@ const Projects: React.FC = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 1 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="absolute w-3/4 rounded-br-3xl rounded-tr-3xl object-cover"
+                className="absolute object-cover w-3/4 rounded-br-3xl rounded-tr-3xl"
               />
             )}
           </AnimatePresence>
         </div>
 
         {/* Right Div */}
-        <div className="flex w-1/2 flex-col space-y-4 pr-40 text-light">
-          <div className="flex w-full items-end justify-between">
+        <div className="flex flex-col w-1/2 p-4 space-y-4 text-light">
+          <div className="flex items-end justify-between w-full">
             <h1 className="text-4xl font-bold uppercase">Projects</h1>
             <span className="text-lg">9</span>
           </div>
           <motion.div
-            className="flex w-full flex-col"
+            className="flex flex-col w-full"
             initial="hidden"
             animate="visible"
             exit="hidden"
             variants={containerVariants}
           >
             <motion.ul
-              className="flex w-full list-none flex-col divide-y-2 text-light"
+              className="flex flex-col w-full list-none divide-y-2 text-light"
               variants={containerVariants}
             >
               {projects.map((project, index) => (
