@@ -5,6 +5,11 @@ import { GoArrowUpRight } from "react-icons/go";
 import { GoArrowUp } from "react-icons/go";
 import { useLocation } from "react-router-dom";
 
+import seo from "../../src/assets/services/SEO.png";
+import photoVideo from "../../src/assets/services/photoVideography.png";
+import websiteDesign from "../../src/assets/services/websiteDesign.png";
+import videoEditing from "../../src/assets/services/videoEditing.png";
+
 type RefKeys =
   | "socialMediaRef"
   | "contentCreationRef"
@@ -102,7 +107,7 @@ const Services = () => {
           setIsButtonVisible(true);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (socialMediaRef.current) {
@@ -117,7 +122,7 @@ const Services = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center min-h-screen mx-auto bg-secondary">
+    <div className="mx-auto flex min-h-screen flex-col items-center bg-secondary">
       {/*
       <section className="w-full mt-12">
         <div className="px-2 flex flex-col items-center justify-center overflow-hidden text-center font-lemonmilk tracking-tighter text-[calc(10vw)] md:text-[calc(8vw)] lg:text-[calc(6vw)] xl:text-[calc(8vw)] 2xl:text-[calc(6vw)] z-10 text-light">
@@ -156,7 +161,7 @@ const Services = () => {
       </section>
 */}
 
-      <section className="flex flex-col w-full">
+      <section className="flex w-full flex-col">
         <div className="bg-secondary text-light">
           <TextParallaxContent
             imgUrl="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -164,22 +169,22 @@ const Services = () => {
             heading="SOCIAL MEDIA MANAGEMENT"
             scrollToRef={socialMediaRef}
           >
-            <div className="grid max-w-5xl grid-cols-1 gap-8 px-4 pt-12 pb-24 mx-auto md:grid-cols-12">
-              <h2 className="col-span-1 text-3xl font-bold md:col-span-4 font-lemonmilk">
+            <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 px-4 pb-24 pt-12 md:grid-cols-12">
+              <h2 className="col-span-1 font-lemonmilk text-3xl font-bold md:col-span-4">
                 SOCIAL MEDIA MANAGEMENT
               </h2>
               <div className="col-span-1 md:col-span-8">
-                <p className="mb-4 text-xl text-light md:text-xl font-josefin">
+                <p className="mb-4 font-josefin text-xl text-light md:text-xl">
                   Maximize your brand’s impact on social media with our
                   comprehensive management services, tailored for up to three
                   different platforms. From content creation to engagement, we
                   handle every aspect of your social presence so you can focus
                   on growing your business.
                 </p>
-                <p className="mb-4 text-xl text-light md:text-2xl font-bold font-alata">
+                <p className="mb-4 font-alata text-xl font-bold text-light md:text-2xl">
                   What We Offer
                 </p>
-                <ul className="list-disc ml-8 mb-4 space-y-2 font-josefin">
+                <ul className="mb-4 ml-8 list-disc space-y-2 font-josefin">
                   <li>
                     <span className="font-bold">Content Creation:</span> We
                     craft high-quality posts, engaging reels, and dynamic
@@ -206,10 +211,10 @@ const Services = () => {
                   </li>
                 </ul>
 
-                <p className="mb-4 text-xl text-light md:text-2xl font-bold font-alata">
+                <p className="mb-4 font-alata text-xl font-bold text-light md:text-2xl">
                   Why Our Social Media Management Works
                 </p>
-                <ul className="list-disc ml-8 space-y-2 font-josefin">
+                <ul className="ml-8 list-disc space-y-2 font-josefin">
                   <li>
                     <span className="font-bold">Tailored to Your Brand:</span>{" "}
                     Every piece of content we create is customized to match your
@@ -243,22 +248,22 @@ const Services = () => {
             heading="CONTENT CREATION"
             scrollToRef={contentCreationRef}
           >
-            <div className="grid max-w-5xl grid-cols-1 gap-8 px-4 pt-12 pb-24 mx-auto md:grid-cols-12">
-              <h2 className="col-span-1 text-3xl font-bold md:col-span-4 font-lemonmilk">
+            <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 px-4 pb-24 pt-12 md:grid-cols-12">
+              <h2 className="col-span-1 font-lemonmilk text-3xl font-bold md:col-span-4">
                 CONTENT CREATION
               </h2>
               <div className="col-span-1 md:col-span-8">
-                <p className="mb-4 text-xl text-light md:text-xl font-josefin">
+                <p className="mb-4 font-josefin text-xl text-light md:text-xl">
                   Create compelling content that tells your brand’s story and
                   engages your audience. At FrameFlow, we offer a full range of
                   content creation services, from social media posts and videos
                   to blog articles and custom content that fits your unique
                   needs.
                 </p>
-                <p className="mb-4 text-xl text-light md:text-2xl font-bold font-alata">
+                <p className="mb-4 font-alata text-xl font-bold text-light md:text-2xl">
                   What We Offer
                 </p>
-                <ul className="list-disc ml-8 mb-4 space-y-2 font-josefin">
+                <ul className="mb-4 ml-8 list-disc space-y-2 font-josefin">
                   <li>
                     <span className="font-bold">Social Media Content:</span>{" "}
                     High-quality posts, reels, and stories crafted to keep your
@@ -285,10 +290,10 @@ const Services = () => {
                   </li>
                 </ul>
 
-                <p className="mb-4 text-xl text-light md:text-2xl font-bold font-alata">
+                <p className="mb-4 font-alata text-xl font-bold text-light md:text-2xl">
                   Why Our Content Creation Stands Out
                 </p>
-                <ul className="list-disc ml-8 space-y-2 font-josefin">
+                <ul className="ml-8 list-disc space-y-2 font-josefin">
                   <li>
                     <span className="font-bold">
                       Brand-Centric Storytelling:
@@ -326,26 +331,26 @@ const Services = () => {
             </div>
           </TextParallaxContent>
           <TextParallaxContent
-            imgUrl="https://images.unsplash.com/photo-1504610926078-a1611febcad3?q=80&w=2416&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            imgUrl={seo}
             subheading="Get Found Online!"
             heading="SEARCH ENGINE OPTIMIZATION"
             scrollToRef={seoRef}
           >
-            <div className="grid max-w-5xl grid-cols-1 gap-8 px-4 pt-12 pb-24 mx-auto md:grid-cols-12">
-              <h2 className="col-span-1 text-3xl font-bold md:col-span-4 font-lemonmilk">
+            <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 px-4 pb-24 pt-12 md:grid-cols-12">
+              <h2 className="col-span-1 font-lemonmilk text-3xl font-bold md:col-span-4">
                 SEARCH ENGINE OPTIMIZATION (SEO)
               </h2>
               <div className="col-span-1 md:col-span-8">
-                <p className="mb-4 text-xl text-light md:text-xl font-josefin">
+                <p className="mb-4 font-josefin text-xl text-light md:text-xl">
                   Rank higher, reach further, and grow faster with FrameFlow’s
                   comprehensive SEO services. Our proven strategies help your
                   business increase organic visibility, drive qualified traffic,
                   and achieve measurable results on search engines like Google.
                 </p>
-                <p className="mb-4 text-xl text-light md:text-2xl font-bold font-alata">
+                <p className="mb-4 font-alata text-xl font-bold text-light md:text-2xl">
                   What We Offer
                 </p>
-                <ul className="list-disc ml-8 mb-4 space-y-2 font-josefin">
+                <ul className="mb-4 ml-8 list-disc space-y-2 font-josefin">
                   <li>
                     <span className="font-bold">
                       Keyword Research & Strategy:
@@ -388,10 +393,10 @@ const Services = () => {
                   </li>
                 </ul>
 
-                <p className="mb-4 text-xl text-light md:text-2xl font-bold font-alata">
+                <p className="mb-4 font-alata text-xl font-bold text-light md:text-2xl">
                   Why Our SEO Drives Results
                 </p>
-                <ul className="list-disc ml-8 space-y-2 font-josefin">
+                <ul className="ml-8 list-disc space-y-2 font-josefin">
                   <li>
                     <span className="font-bold">Data-Driven Strategy:</span> Our
                     SEO campaigns are powered by data and analytics, ensuring we
@@ -429,17 +434,17 @@ const Services = () => {
             </div>
           </TextParallaxContent>
           <TextParallaxContent
-            imgUrl="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            imgUrl={websiteDesign}
             subheading="Ready to Build a Website That Drives Results?"
             heading="WEB DESIGN"
             scrollToRef={webRef}
           >
-            <div className="grid max-w-5xl grid-cols-1 gap-8 px-4 pt-12 pb-24 mx-auto md:grid-cols-12">
-              <h2 className="col-span-1 text-3xl font-bold md:col-span-4 font-lemonmilk">
+            <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 px-4 pb-24 pt-12 md:grid-cols-12">
+              <h2 className="col-span-1 font-lemonmilk text-3xl font-bold md:col-span-4">
                 WEB DESIGN
               </h2>
               <div className="col-span-1 md:col-span-8">
-                <p className="mb-4 text-xl text-light md:text-xl font-josefin">
+                <p className="mb-4 font-josefin text-xl text-light md:text-xl">
                   Elevate your online presence with a custom-designed website
                   that’s visually stunning, fully functional, and optimized for
                   growth. At FrameFlow, we build websites that not only look
@@ -447,10 +452,10 @@ const Services = () => {
                   WordPress site, a quick setup on Wix, or a custom-coded
                   solution, we've got the expertise to make it happen.
                 </p>
-                <p className="mb-4 text-xl text-light md:text-2xl font-bold font-alata">
+                <p className="mb-4 font-alata text-xl font-bold text-light md:text-2xl">
                   What We Offer
                 </p>
-                <ul className="list-disc ml-8 mb-4 space-y-2 font-josefin">
+                <ul className="mb-4 ml-8 list-disc space-y-2 font-josefin">
                   <li>
                     <span className="font-bold">Platform Versatility:</span> We
                     work across popular website platforms like WordPress and
@@ -487,10 +492,10 @@ const Services = () => {
                   </li>
                 </ul>
 
-                <p className="mb-4 text-xl text-light md:text-2xl font-bold font-alata">
+                <p className="mb-4 font-alata text-xl font-bold text-light md:text-2xl">
                   Why Our Web Design Stands Out
                 </p>
-                <ul className="list-disc ml-8 space-y-2 font-josefin">
+                <ul className="ml-8 list-disc space-y-2 font-josefin">
                   <li>
                     <span className="font-bold">
                       Custom, Client-Centered Approach:
@@ -528,17 +533,17 @@ const Services = () => {
             </div>
           </TextParallaxContent>
           <TextParallaxContent
-            imgUrl="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            imgUrl={photoVideo}
             subheading="Let’s Capture Your Vision!"
             heading="PHOTOGRAPGY / VIDEOGRAPHY"
             scrollToRef={pvRef}
           >
-            <div className="grid max-w-5xl grid-cols-1 gap-8 px-4 pt-12 pb-24 mx-auto md:grid-cols-12">
-              <h2 className="col-span-1 text-3xl font-bold md:col-span-4 font-lemonmilk">
+            <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 px-4 pb-24 pt-12 md:grid-cols-12">
+              <h2 className="col-span-1 font-lemonmilk text-3xl font-bold md:col-span-4">
                 PHOTOGRAPGY / VIDEOGRAPHY
               </h2>
               <div className="col-span-1 md:col-span-8">
-                <p className="mb-4 text-xl text-light md:text-xl font-josefin">
+                <p className="mb-4 font-josefin text-xl text-light md:text-xl">
                   Bring your brand to life with stunning photography and
                   high-quality videography that tells your story, engages your
                   audience, and leaves a lasting impression. At FrameFlow, we
@@ -546,10 +551,10 @@ const Services = () => {
                   needs—whether it’s for your website, social media, or
                   marketing campaigns.
                 </p>
-                <p className="mb-4 text-xl text-light md:text-2xl font-bold font-alata">
+                <p className="mb-4 font-alata text-xl font-bold text-light md:text-2xl">
                   What We Offer
                 </p>
-                <ul className="list-disc ml-8 mb-4 space-y-2 font-josefin">
+                <ul className="mb-4 ml-8 list-disc space-y-2 font-josefin">
                   <li>
                     <span className="font-bold">Brand Photography:</span>{" "}
                     Professional photos that capture the essence of your brand,
@@ -587,10 +592,10 @@ const Services = () => {
                   </li>
                 </ul>
 
-                <p className="mb-4 text-xl text-light md:text-2xl font-bold font-alata">
+                <p className="mb-4 font-alata text-xl font-bold text-light md:text-2xl">
                   Why Our Photography & Videography Stand Out
                 </p>
-                <ul className="list-disc ml-8 space-y-2 font-josefin">
+                <ul className="ml-8 list-disc space-y-2 font-josefin">
                   <li>
                     <span className="font-bold">Brand-Focused Visuals:</span> We
                     don’t just shoot—we work with you to understand your brand’s
@@ -633,27 +638,27 @@ const Services = () => {
             </div>
           </TextParallaxContent>
           <TextParallaxContent
-            imgUrl="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            imgUrl={videoEditing}
             subheading="Ready to Elevate Your Visual Content?"
             heading="PHOTO / VIDEO EDITING"
             scrollToRef={editRef}
           >
-            <div className="grid max-w-5xl grid-cols-1 gap-8 px-4 pt-12 pb-24 mx-auto md:grid-cols-12">
-              <h2 className="col-span-1 text-3xl font-bold md:col-span-4 font-lemonmilk">
+            <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 px-4 pb-24 pt-12 md:grid-cols-12">
+              <h2 className="col-span-1 font-lemonmilk text-3xl font-bold md:col-span-4">
                 PHOTO / VIDEO EDITING
               </h2>
               <div className="col-span-1 md:col-span-8">
-                <p className="mb-4 text-xl text-light md:text-xl font-josefin">
+                <p className="mb-4 font-josefin text-xl text-light md:text-xl">
                   Transform your raw footage and images into polished,
                   professional content that amplifies your brand’s message. At
                   FrameFlow, our expert editing team ensures that every video
                   and photo is crafted to perfection, aligning with your brand’s
                   vision and ready to captivate your audience.
                 </p>
-                <p className="mb-4 text-xl text-light md:text-2xl font-bold font-alata">
+                <p className="mb-4 font-alata text-xl font-bold text-light md:text-2xl">
                   What We Offer
                 </p>
-                <ul className="list-disc ml-8 mb-4 space-y-2 font-josefin">
+                <ul className="mb-4 ml-8 list-disc space-y-2 font-josefin">
                   <li>
                     <span className="font-bold">
                       Professional Video Editing:
@@ -701,10 +706,10 @@ const Services = () => {
                   </li>
                 </ul>
 
-                <p className="mb-4 text-xl text-light md:text-2xl font-bold font-alata">
+                <p className="mb-4 font-alata text-xl font-bold text-light md:text-2xl">
                   Why Our Editing Stands Out
                 </p>
-                <ul className="list-disc ml-8 space-y-2 font-josefin">
+                <ul className="ml-8 list-disc space-y-2 font-josefin">
                   <li>
                     <span className="font-bold">
                       Polished, Professional Results:
@@ -748,13 +753,13 @@ const Services = () => {
       </section>
 
       <motion.div
-        className="z-10 progress-bar"
+        className="progress-bar z-10"
         style={{ scaleX: scrollYProgress }}
       />
 
       {isButtonVisible && (
         <motion.div
-          className="fixed z-10 flex items-center justify-center w-16 h-16 bg-white rounded-full cursor-pointer bottom-4 right-4"
+          className="fixed bottom-4 right-4 z-10 flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-white"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -789,21 +794,21 @@ const DividedBlock: React.FC<Service> = ({
 
   return (
     <motion.div
-      className="flex flex-col w-[calc(45vw)] h-[calc(45vw)] sm:w-[calc(45vw)] sm:h-[calc(45vw)] md:w-[calc(30vw)] md:h-[calc(30vw)] lg:w-[calc(30vw)] lg:h-[calc(30vw)] xl:w-[calc(30vw)] xl:h-[calc(30vw)] "
+      className="flex h-[calc(45vw)] w-[calc(45vw)] flex-col sm:h-[calc(45vw)] sm:w-[calc(45vw)] md:h-[calc(30vw)] md:w-[calc(30vw)] lg:h-[calc(30vw)] lg:w-[calc(30vw)] xl:h-[calc(30vw)] xl:w-[calc(30vw)]"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="relative z-10 flex flex-col h-full">
-        <div className="flex items-center justify-center flex-1 w-full bg-black text-light">
-          <h1 className="w-full items-center justify-center flex h-full max-[1024px]:text-[calc(1.5vw)] min-[1024px]:text-[calc(1.5vw)] font-lemonmilk">
+      <div className="relative z-10 flex h-full flex-col">
+        <div className="flex w-full flex-1 items-center justify-center bg-black text-light">
+          <h1 className="flex h-full w-full items-center justify-center font-lemonmilk max-[1024px]:text-[calc(1.5vw)] min-[1024px]:text-[calc(1.5vw)]">
             {heading}
           </h1>
         </div>
-        <div className="flex flex-row w-full h-1/2">
+        <div className="flex h-1/2 w-full flex-row">
           <div className="flex w-1/2">
             <motion.img
               src={imgSrc}
-              className="absolute inset-0 w-full h-full"
+              className="absolute inset-0 h-full w-full"
               initial={{ scale: 1, x: 0, y: 0 }}
               animate={
                 isHovered
@@ -814,9 +819,9 @@ const DividedBlock: React.FC<Service> = ({
               alt="Background"
             />
           </div>
-          <div className="flex flex-row items-center justify-center w-1/2 text-black bg-light">
+          <div className="flex w-1/2 flex-row items-center justify-center bg-light text-black">
             <button
-              className="flex flex-row items-center max-[1024px]:text-[calc(2vw)] min-[1024px]:text-[calc(1.5vw)] justify-center w-full h-full font-alata"
+              className="flex h-full w-full flex-row items-center justify-center font-alata max-[1024px]:text-[calc(2vw)] min-[1024px]:text-[calc(1.5vw)]"
               onClick={handleClick}
             >
               MORE <GoArrowUpRight className="font-bold" />
@@ -848,7 +853,7 @@ const TextParallaxContent: React.FC<TextParallaxContentProps> = ({
 
   return (
     <div ref={scrollToRef}>
-      <div className="relative h-[150vh] font-lemonmilk ">
+      <div className="relative h-[150vh] font-lemonmilk">
         <StickyImage imgUrl={imgUrl} />
         <div ref={overlayRef}>
           <OverlayCopy heading={heading} subheading={subheading} />
@@ -918,19 +923,19 @@ const OverlayCopy: React.FC<OverlayCopyProps> = ({ subheading, heading }) => {
         opacity,
       }}
       ref={targetRef}
-      className="absolute top-0 left-0 flex flex-col items-center justify-center w-full h-screen text-white"
+      className="absolute left-0 top-0 flex h-screen w-full flex-col items-center justify-center text-white"
     >
-      <p className="mb-2 text-xl text-center md:mb-4 md:text-3xl">
+      <p className="mb-2 text-center text-xl md:mb-4 md:text-3xl">
         {subheading}
       </p>
-      <p className="text-4xl font-bold text-center md:text-7xl">{heading}</p>
+      <p className="text-center text-4xl font-bold md:text-7xl">{heading}</p>
     </motion.div>
   );
 };
 
 const useIntersectionObserver = (
   callback: IntersectionObserverCallback,
-  options: IntersectionObserverInit
+  options: IntersectionObserverInit,
 ) => {
   const targetRef = useRef<HTMLDivElement>(null);
 

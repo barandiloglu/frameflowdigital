@@ -296,38 +296,38 @@ const HomePage = () => {
   const { scrollYProgress } = useScroll();
 
   return (
-    <div className="flex flex-col items-center min-h-screen mx-auto bg-secondary">
+    <div className="mx-auto flex min-h-screen flex-col items-center bg-secondary">
       <section className="mt-20 min-h-[20vh] md:min-h-[30vh] lg:min-h-[30vh] xl:min-h-[55vh] 2xl:min-h-[55vh]">
-        <div className="px-2 flex uppercase overflow-hidden font-lemonmilk tracking-tighter text-[calc(12vw)] md:text-[calc(10vw)] lg:text-[calc(10vw)] z-10 text-light">
+        <div className="z-10 flex overflow-hidden px-2 font-lemonmilk text-[calc(12vw)] uppercase tracking-tighter text-light md:text-[calc(10vw)] lg:text-[calc(10vw)]">
           <motion.div
             variants={banner}
             initial="hidden"
             animate="visible"
-            className="px-2 uppercase overflow-hidden font-bold tracking-tighter text-[calc(12vw)] md:text-[calc(10vw)] lg:text-[calc(10vw)] z-10"
+            className="z-10 overflow-hidden px-2 text-[calc(12vw)] font-bold uppercase tracking-tighter md:text-[calc(10vw)] lg:text-[calc(10vw)]"
           >
             {letters.map((letter, index) => (
               <motion.span
                 key={index}
                 variants={bannerChild}
-                className="text-light font-lemonmilk"
+                className="font-lemonmilk text-light"
               >
                 {letter === " " ? "\u00A0" : letter}
               </motion.span>
             ))}
           </motion.div>
         </div>
-        <div className="flex items-center justify-center mt-8">
+        <div className="mt-8 flex items-center justify-center">
           <motion.div
             variants={banner}
             initial="hidden"
             animate="visible"
-            className="px-2 absolute uppercase overflow-hidden font-bold tracking-tighter text-[calc(12vw)] md:text-[calc(10vw)] lg:text-[calc(10vw)] z-10"
+            className="absolute z-10 overflow-hidden px-2 text-[calc(12vw)] font-bold uppercase tracking-tighter md:text-[calc(10vw)] lg:text-[calc(10vw)]"
           >
             {letters2.map((letter, index) => (
               <motion.span
                 key={index}
                 variants={bannerChild}
-                className="text-primary font-lemonmilk"
+                className="font-lemonmilk text-primary"
               >
                 {letter === " " ? "\u00A0" : letter}
               </motion.span>
@@ -337,14 +337,14 @@ const HomePage = () => {
             initial="hidden"
             animate="visible"
             variants={bannerSecondChild}
-            className="px-2 absolute uppercase overflow-hidden font-bold tracking-tighter flex text-[calc(12vw)] md:text-[calc(10vw)] lg:text-[calc(10vw)] z-0"
+            className="absolute z-0 flex overflow-hidden px-2 text-[calc(12vw)] font-bold uppercase tracking-tighter md:text-[calc(10vw)] lg:text-[calc(10vw)]"
           >
             {letters2.map((letter, index) => (
               <motion.span
                 key={index}
                 variants={bannerSecondChild}
                 animate="colorChange"
-                className="text-transparent font-lemonmilk text-stroke-light"
+                className="text-stroke-light font-lemonmilk text-transparent"
               >
                 {letter === " " ? "\u00A0" : letter}
               </motion.span>
@@ -354,14 +354,14 @@ const HomePage = () => {
             initial="hidden"
             animate="visible"
             variants={bannerThirdChild}
-            className="px-2 absolute uppercase overflow-hidden font-bold tracking-tighter flex text-[calc(12vw)] md:text-[calc(10vw)] lg:text-[calc(10vw)] z-0"
+            className="absolute z-0 flex overflow-hidden px-2 text-[calc(12vw)] font-bold uppercase tracking-tighter md:text-[calc(10vw)] lg:text-[calc(10vw)]"
           >
             {letters2.map((letter, index) => (
               <motion.span
                 key={index}
                 variants={bannerThirdChild}
                 animate="colorChange"
-                className="text-transparent font-lemonmilk text-stroke"
+                className="text-stroke font-lemonmilk text-transparent"
               >
                 {letter === " " ? "\u00A0" : letter}
               </motion.span>
@@ -371,14 +371,14 @@ const HomePage = () => {
       </section>
 
       <section className="w-full max-[1200px]:mt-20">
-        <div className="min-h-screen px-4 py-12 bg-secondary">
+        <div className="min-h-screen bg-secondary px-4 py-12">
           <motion.div
             initial="initial"
             animate="animate"
             transition={{
               staggerChildren: 0.3,
             }}
-            className="grid max-w-6xl grid-cols-12 gap-4 mx-auto grid-flow-dense"
+            className="mx-auto grid max-w-6xl grid-flow-dense grid-cols-12 gap-4"
           >
             <HeaderBlock />
             <SocialsBlock />
@@ -392,12 +392,12 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section className="w-full mb-10">
-        <div className="px-2 flex flex-col items-center justify-center overflow-hidden text-center font-lemonmilk tracking-tighter text-[calc(6vw)] md:text-[calc(4vw)] lg:text-[calc(4vw)] xl:text-[calc(4vw)] 2xl:text-[calc(4vw)] z-10 text-light">
+      <section className="mb-10 w-full">
+        <div className="z-10 flex flex-col items-center justify-center overflow-hidden px-2 text-center font-lemonmilk text-[calc(6vw)] tracking-tighter text-light md:text-[calc(4vw)] lg:text-[calc(4vw)] xl:text-[calc(4vw)] 2xl:text-[calc(4vw)]">
           <motion.div
             initial="hidden"
             animate="visible"
-            className="z-10 flex flex-col items-center justify-center px-2 overflow-hidden font-bold tracking-tighter uppercase"
+            className="z-10 flex flex-col items-center justify-center overflow-hidden px-2 font-bold uppercase tracking-tighter"
           >
             <div className="flex flex-row space-x-8">
               <motion.span animate={controls} className="text-light">
@@ -413,8 +413,8 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section className="flex flex-col w-full mb-20">
-        <div className="grid w-full grid-cols-2 gap-8 px-6 xl:grid-cols-6 lg:grid-cols-3 md:grid-cols-3 justify-items-center">
+      <section className="mb-20 flex w-full flex-col">
+        <div className="grid w-full grid-cols-2 justify-items-center gap-8 px-6 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6">
           {services.map((service, index) => (
             <DividedBlock
               key={index}
@@ -428,7 +428,7 @@ const HomePage = () => {
       </section>
 
       <motion.div
-        className="z-10 progress-bar"
+        className="progress-bar z-10"
         style={{ scaleX: scrollYProgress }}
       />
     </div>
@@ -462,7 +462,7 @@ const Block = ({ className, ...rest }: BlockProps) => {
       }}
       className={twMerge(
         "col-span-4 rounded-lg border border-zinc-700 bg-zinc-800 p-6",
-        className
+        className,
       )}
       {...rest}
     />
@@ -476,7 +476,7 @@ const HeaderBlock = () => (
       alt="avatar"
       className="mb-4 size-[calc(5vw)] md:size-[calc(2vw)] lg:size-[calc(2.5vw)] xl:size-[calc(3vw)]"
     />
-    <h1 className="mb-12 text-lg md:text-xl lg:text-3xl xl:text-3xl text-light font-medium leading-tight">
+    <h1 className="mb-12 text-lg font-medium leading-tight text-light md:text-xl lg:text-3xl xl:text-3xl">
       <span className="font-alata">Hello</span>
       <motion.span
         animate={{
@@ -488,7 +488,7 @@ const HeaderBlock = () => (
       >
         👋{" "}
       </motion.span>
-      <span className="text-zinc-400 text-lg md:text-lg lg:text-2xl xl:text-xl font-josefin">
+      <span className="font-josefin text-lg text-zinc-400 md:text-lg lg:text-2xl xl:text-xl">
         {" "}
         Tell us your vision for your brand, and we will collaborate with you to
         develop a customized strategy that propels you forward in the digital
@@ -512,7 +512,7 @@ const SocialsBlock = () => (
     >
       <a
         href="https://www.instagram.com/frameflowdigital/"
-        className="grid h-full text-3xl text-white place-content-center"
+        className="grid h-full place-content-center text-3xl text-white"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -527,8 +527,10 @@ const SocialsBlock = () => (
       className="col-span-6 bg-[#2868B2] md:col-span-3"
     >
       <a
-        href="#"
-        className="grid h-full text-3xl text-white place-content-center"
+        href="https://www.linkedin.com/company/frameflowdigital/"
+        className="grid h-full place-content-center text-3xl text-white"
+        target="_blank"
+        rel="noopener noreferrer"
       >
         <SiLinkedin />
       </a>
@@ -542,7 +544,7 @@ const SocialsBlock = () => (
     >
       <a
         href="https://www.tiktok.com/@frameflowdigital"
-        className="grid h-full text-3xl text-black place-content-center"
+        className="grid h-full place-content-center text-3xl text-black"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -554,22 +556,22 @@ const SocialsBlock = () => (
 
 const AboutBlock = () => {
   return (
-    <Block className="flex flex-col space-y-2 col-span-12 leading-snug bg-primary p-8  ">
-      <span className="font-bold text-secondary text-lg md:text-xl lg:text-3xl xl:text-3xl font-alata">
+    <Block className="col-span-12 flex flex-col space-y-2 bg-primary p-8 leading-snug">
+      <span className="font-alata text-lg font-bold text-secondary md:text-xl lg:text-3xl xl:text-3xl">
         Building a business is easy, but creating a unique identity takes
         expertise and thoughtful strategy.
       </span>
-      <span className="text-light text-lg md:text-lg lg:text-2xl xl:text-xl font-josefin">
+      <span className="font-josefin text-lg text-light md:text-lg lg:text-2xl xl:text-xl">
         At FrameFlow, we’re here to help you craft the most fitting identity for
         your business, ensure its consistent growth, and steadily increase its
         visibility.
       </span>
-      <span className="text-light text-lg md:text-lg lg:text-2xl xl:text-xl font-josefin">
+      <span className="font-josefin text-lg text-light md:text-lg lg:text-2xl xl:text-xl">
         With over a decade of combined experience across various marketing
         fields, the professionals at FrameFlow are more than just a marketing
         company—we’re your most crucial partner on the path to growth.
       </span>
-      <span className="text-light text-lg md:text-lg lg:text-2xl xl:text-xl font-josefin">
+      <span className="font-josefin text-lg text-light md:text-lg lg:text-2xl xl:text-xl">
         We understand how busy you are, which is why we pride ourselves on being
         accessible. When you work with us, you won’t have to wait endlessly for
         answers. Our team is always available, ready to provide prompt support
@@ -581,12 +583,12 @@ const AboutBlock = () => {
 
 const WhyBlock = () => {
   return (
-    <Block className="flex flex-col space-y-2 col-span-12 leading-snug bg-primary p-8  ">
-      <span className="font-bold text-secondary text-lg md:text-xl lg:text-3xl xl:text-3xl font-alata">
+    <Block className="col-span-12 flex flex-col space-y-2 bg-primary p-8 leading-snug">
+      <span className="font-alata text-lg font-bold text-secondary md:text-xl lg:text-3xl xl:text-3xl">
         Why Choose FrameFlow?
       </span>
-      <span className="text-light text-lg md:text-lg lg:text-2xl xl:text-xl font-josefin">
-        <ul className="list-disc ml-8 space-y-4 mt-4">
+      <span className="font-josefin text-lg text-light md:text-lg lg:text-2xl xl:text-xl">
+        <ul className="ml-8 mt-4 list-disc space-y-4">
           <li>
             Data-driven strategies that enhance your brand’s visibility and
             engagement.
@@ -616,15 +618,15 @@ const WhyBlock = () => {
 
 const LocationBlock = () => (
   <Block
-    className="col-span-12 flex flex-col items-center justify-center gap-4 md:col-span-3 text-[calc(8vw)] md:text-[calc(2vw)] lg:text-[calc(1.25vw)]"
+    className="col-span-12 flex flex-col items-center justify-center gap-4 text-[calc(8vw)] md:col-span-3 md:text-[calc(2vw)] lg:text-[calc(1.25vw)]"
     style={{
       backgroundImage: `url(${torontoVector})`,
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
     }}
   >
-    <FiMapPin className="size-[calc(6vw)] md:size-[calc(2vw)] lg:size-[calc(2.5vw)] xl:size-[calc(1.75vw)] mb-4 font-bold font-alata text-light" />
-    <p className="text-[calc(5vw)] md:text-[calc(2vw)] lg:text-[calc(1.75vw)] font-bold text-center text-light">
+    <FiMapPin className="mb-4 size-[calc(6vw)] font-alata font-bold text-light md:size-[calc(2vw)] lg:size-[calc(2.5vw)] xl:size-[calc(1.75vw)]" />
+    <p className="text-center text-[calc(5vw)] font-bold text-light md:text-[calc(2vw)] lg:text-[calc(1.75vw)]">
       Toronto
     </p>
   </Block>
@@ -663,12 +665,12 @@ const ContactBlock = () => (
   >
     <button
       type="submit"
-      className="flex flex-col items-center space-y-2 gap-2 rounded bg-zinc-800 w-full px-2 py-8 font-medium text-light text-[calc(2.5vw)] md:text-[calc(1.5vw)] lg:text-[calc(1vw)] xl:text-[calc(1.5vw)]"
+      className="flex w-full flex-col items-center gap-2 space-y-2 rounded bg-zinc-800 px-2 py-8 text-[calc(2.5vw)] font-medium text-light md:text-[calc(1.5vw)] lg:text-[calc(1vw)] xl:text-[calc(1.5vw)]"
     >
-      <span className="font-bold text-light text-lg md:text-xl lg:text-3xl xl:text-3xl font-alata">
+      <span className="font-alata text-lg font-bold text-light md:text-xl lg:text-3xl xl:text-3xl">
         Ready to create a lasting identity for your business?{" "}
       </span>
-      <span className="text-light text-lg md:text-lg lg:text-2xl xl:text-2xl font-josefin">
+      <span className="font-josefin text-lg text-light md:text-lg lg:text-2xl xl:text-2xl">
         Let’s partner up and start building your future today!
       </span>
     </button>
@@ -697,21 +699,21 @@ const DividedBlock: React.FC<Service> = ({
 
   return (
     <motion.div
-      className="flex flex-col w-[calc(45vw)] h-[calc(45vw)] sm:w-[calc(45vw)] sm:h-[calc(45vw)] md:w-[calc(30vw)] md:h-[calc(30vw)] lg:w-[calc(30vw)] lg:h-[calc(30vw)] xl:w-[calc(15vw)] xl:h-[calc(15vw)] "
+      className="flex h-[calc(45vw)] w-[calc(45vw)] flex-col sm:h-[calc(45vw)] sm:w-[calc(45vw)] md:h-[calc(30vw)] md:w-[calc(30vw)] lg:h-[calc(30vw)] lg:w-[calc(30vw)] xl:h-[calc(15vw)] xl:w-[calc(15vw)]"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="relative z-10 flex flex-col h-full">
-        <div className="flex items-center justify-center flex-1 w-full bg-black text-light">
-          <h1 className="w-full items-center justify-center flex h-full text-[calc(2.5vw)] md:text-[calc(1.5vw)] lg:text-[calc(1.5vw)] xl:text-[calc(.75vw)] 2xl:text-[calc(.75vw)] font-lemonmilk">
+      <div className="relative z-10 flex h-full flex-col">
+        <div className="flex w-full flex-1 items-center justify-center bg-black text-light">
+          <h1 className="flex h-full w-full items-center justify-center font-lemonmilk text-[calc(2.5vw)] md:text-[calc(1.5vw)] lg:text-[calc(1.5vw)] xl:text-[calc(.75vw)] 2xl:text-[calc(.75vw)]">
             {heading}
           </h1>
         </div>
-        <div className="flex flex-row w-full h-1/2">
+        <div className="flex h-1/2 w-full flex-row">
           <div className="flex w-1/2">
             <motion.img
               src={imgSrc}
-              className="absolute inset-0 w-full h-full"
+              className="absolute inset-0 h-full w-full"
               initial={{ scale: 1, x: 0, y: 0 }}
               animate={
                 isHovered
@@ -722,9 +724,9 @@ const DividedBlock: React.FC<Service> = ({
               alt="Background"
             />
           </div>
-          <div className="flex flex-row items-center justify-center w-1/2 text-black bg-light">
+          <div className="flex w-1/2 flex-row items-center justify-center bg-light text-black">
             <button
-              className="flex flex-row items-center text-[calc(2.5vw)] md:text-[calc(1.5vw)] lg:text-[calc(1.5vw)] xl:text-[calc(.75vw)] 2xl:text-[calc(.75vw)] justify-center w-full h-full font-josefin"
+              className="flex h-full w-full flex-row items-center justify-center font-josefin text-[calc(2.5vw)] md:text-[calc(1.5vw)] lg:text-[calc(1.5vw)] xl:text-[calc(.75vw)] 2xl:text-[calc(.75vw)]"
               onClick={handleClick}
             >
               MORE <GoArrowUpRight className="font-bold" />

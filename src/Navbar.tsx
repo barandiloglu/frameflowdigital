@@ -16,6 +16,11 @@ import { FiArrowRight } from "react-icons/fi";
 import Modal from "./Modal";
 import ContactUs from "./pages/ContactUs";
 
+import img1 from "../src/assets/posts/1.png";
+import img2 from "../src/assets/posts/2.png";
+import img3 from "../src/assets/posts/3.png";
+import img4 from "../src/assets/posts/4.png";
+
 const Navbar = () => {
   const textControls = useAnimation();
   const logoControls = useAnimation();
@@ -120,25 +125,25 @@ const Navbar = () => {
     {
       heading: "Projects",
       subheading: "See our projects",
-      imgSrc: "./src/assets/posts/1.png",
+      imgSrc: img1,
       href: "/projects",
     },
     {
       heading: "Services",
       subheading: "Our services",
-      imgSrc: "./src/assets/posts/2.png",
+      imgSrc: img2,
       href: "/services",
     },
     {
       heading: "Why Us?",
       subheading: "Why choose us?",
-      imgSrc: "./src/assets/posts/3.png",
+      imgSrc: img3,
       href: "/why-us",
     },
     {
       heading: "Contact Us",
       subheading: "Get in touch",
-      imgSrc: "./src/assets/posts/4.png",
+      imgSrc: img4,
       href: "/contact-us",
     },
   ];
